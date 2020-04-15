@@ -64,7 +64,7 @@ function shuffle(array) {
 const getRandomItems = (items, count = 0) => {
     const itemsClone = Array.from(items);
     shuffle(itemsClone)
-    const removed =  itemsClone.splice(0, count)
+    const removed = itemsClone.splice(0, count)
     return removed
 }
 
@@ -72,7 +72,7 @@ class App extends Component {
     state = {
         p1: getRandomItems(getItems(10), 5),
         p2: getItems(5, 10),
-        change: getItems(5, 15),
+        change: [],
         submit: getItems(5, 20),
         bag: getItems(100, 100)
     };
@@ -90,6 +90,29 @@ class App extends Component {
     };
 
     getList = id => this.state[this.id2List[id]];
+
+    onSubmitChange = (items, destination) => {
+        const numberOfChange = items.length
+
+        const bagItemsClone = Array.from(this.state.bag);
+        shuffle(bagItemsClone)
+
+        const newItemFromBag = bagItemsClone.splice(0, numberOfChange)
+        const destinationState = this.state[this.id2List[destination.droppableId]]
+
+        console.log(Object.keys({numberOfChange}).pop(), numberOfChange)
+        console.log(Object.keys({destinationState}).pop(), destinationState)
+        console.log(Object.keys({newItemFromBag}).pop(), newItemFromBag)
+
+        console.log(Object.keys({bagItemsClone}).pop(), bagItemsClone)
+        console.log(Object.keys({items}).pop(), items)
+
+        this.setState({
+            [this.id2List[destination.droppableId]]: [...destinationState, ...newItemFromBag],
+            bag: [...bagItemsClone, ...items],
+            change: []
+        });
+    }
 
     onDragEnd = result => {
         const {source, destination} = result;
@@ -159,6 +182,9 @@ class App extends Component {
                         )}
                     </Droppable>
                     <h2>droppableChange</h2>
+                    <button
+                        onClick={() => this.onSubmitChange(this.state.change, {droppableId: "droppableP1"})}>Change
+                    </button>
                     <Droppable droppableId="droppableChange" direction="horizontal">
                         {(provided, snapshot) => (
                             <div
