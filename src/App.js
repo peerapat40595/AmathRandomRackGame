@@ -57,12 +57,24 @@ const getListStyle = isDraggingOver => ({
     overflow: "auto"
 });
 
+function shuffle(array) {
+    array.sort(() => Math.random() - 0.5);
+}
+
+const getRandomItems = (items, count = 0) => {
+    const itemsClone = Array.from(items);
+    shuffle(itemsClone)
+    const removed =  itemsClone.splice(0, count)
+    return removed
+}
+
 class App extends Component {
     state = {
-        p1: getItems(10),
+        p1: getRandomItems(getItems(10), 5),
         p2: getItems(5, 10),
         change: getItems(5, 15),
-        submit: getItems(5, 20)
+        submit: getItems(5, 20),
+        bag: getItems(100, 100)
     };
 
     /**
@@ -117,6 +129,7 @@ class App extends Component {
             <div className="App">
                 <DragDropContext onDragEnd={this.onDragEnd}>
                     <h2>P1 Rack</h2>
+                    {this.state.bag.map((item, index) => (<span id={index}>{item.content}</span>))}
                     <Droppable droppableId="droppableP1" direction="horizontal">
                         {(provided, snapshot) => (
                             <div
