@@ -92,8 +92,7 @@ class App extends Component {
                 destination.index
             );
 
-            const state = {[this.id2List[source.droppableId]]: resultList};
-            this.setState(state);
+            this.setState({[this.id2List[source.droppableId]]: resultList});
         } else {
             const result = move(
                 this.getList(source.droppableId),
@@ -103,8 +102,8 @@ class App extends Component {
             );
 
             this.setState({
-                p1: result.droppableP1,
-                p2: result.droppableP2
+                [this.id2List[source.droppableId]]: result[source.droppableId],
+                [this.id2List[destination.droppableId]]: result[destination.droppableId],
             });
         }
     };
