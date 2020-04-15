@@ -60,7 +60,9 @@ const getListStyle = isDraggingOver => ({
 class App extends Component {
     state = {
         p1: getItems(10),
-        p2: getItems(5, 10)
+        p2: getItems(5, 10),
+        change: getItems(5, 15),
+        submit: getItems(5, 20)
     };
 
     /**
@@ -114,7 +116,7 @@ class App extends Component {
         return (
             <div className="App">
                 <DragDropContext onDragEnd={this.onDragEnd}>
-                    <h2>P2 Rack</h2>
+                    <h2>P1 Rack</h2>
                     <Droppable droppableId="droppableP1" direction="horizontal">
                         {(provided, snapshot) => (
                             <div
@@ -143,7 +145,65 @@ class App extends Component {
                             </div>
                         )}
                     </Droppable>
-                    <h2>P1 Rack</h2>
+                    <h2>droppableChange</h2>
+                    <Droppable droppableId="droppableChange" direction="horizontal">
+                        {(provided, snapshot) => (
+                            <div
+                                ref={provided.innerRef}
+                                style={getListStyle(snapshot.isDraggingOver)}>
+                                {this.state.change.map((item, index) => (
+                                    <Draggable
+                                        key={item.id}
+                                        draggableId={item.id}
+                                        index={index}>
+                                        {(provided, snapshot) => (
+                                            <div
+                                                ref={provided.innerRef}
+                                                {...provided.draggableProps}
+                                                {...provided.dragHandleProps}
+                                                style={getItemStyle(
+                                                    snapshot.isDragging,
+                                                    provided.draggableProps.style
+                                                )}>
+                                                {item.content}
+                                            </div>
+                                        )}
+                                    </Draggable>
+                                ))}
+                                {provided.placeholder}
+                            </div>
+                        )}
+                    </Droppable>
+                    <h2>droppableSubmit</h2>
+                    <Droppable droppableId="droppableSubmit" direction="horizontal">
+                        {(provided, snapshot) => (
+                            <div
+                                ref={provided.innerRef}
+                                style={getListStyle(snapshot.isDraggingOver)}>
+                                {this.state.submit.map((item, index) => (
+                                    <Draggable
+                                        key={item.id}
+                                        draggableId={item.id}
+                                        index={index}>
+                                        {(provided, snapshot) => (
+                                            <div
+                                                ref={provided.innerRef}
+                                                {...provided.draggableProps}
+                                                {...provided.dragHandleProps}
+                                                style={getItemStyle(
+                                                    snapshot.isDragging,
+                                                    provided.draggableProps.style
+                                                )}>
+                                                {item.content}
+                                            </div>
+                                        )}
+                                    </Draggable>
+                                ))}
+                                {provided.placeholder}
+                            </div>
+                        )}
+                    </Droppable>
+                    <h2>P2 Rack</h2>
                     <Droppable droppableId="droppableP2" direction="horizontal">
                         {(provided, snapshot) => (
                             <div
