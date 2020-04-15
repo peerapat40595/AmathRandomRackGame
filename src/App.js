@@ -74,7 +74,8 @@ class App extends Component {
         p2: getItems(5, 10),
         change: [],
         submit: getItems(5, 20),
-        bag: getItems(100, 100)
+        bag: getItems(5, 100),
+        trash: []
     };
 
     /**
@@ -100,16 +101,26 @@ class App extends Component {
         const newItemFromBag = bagItemsClone.splice(0, numberOfChange)
         const destinationState = this.state[this.id2List[destination.droppableId]]
 
-        console.log(Object.keys({numberOfChange}).pop(), numberOfChange)
-        console.log(Object.keys({destinationState}).pop(), destinationState)
-        console.log(Object.keys({newItemFromBag}).pop(), newItemFromBag)
-
-        console.log(Object.keys({bagItemsClone}).pop(), bagItemsClone)
-        console.log(Object.keys({items}).pop(), items)
-
         this.setState({
             [this.id2List[destination.droppableId]]: [...destinationState, ...newItemFromBag],
             bag: [...bagItemsClone, ...items],
+            change: []
+        });
+    }
+
+    onSubmitConfirm = (items, source) => {
+        const numberOfChange = items.length
+
+        const bagItemsClone = Array.from(this.state.bag);
+        shuffle(bagItemsClone)
+
+        const newItemFromBag = bagItemsClone.splice(0, numberOfChange)
+        const sourceState = this.state[this.id2List[source.droppableId]]
+
+        this.setState({
+            [this.id2List[source.droppableId]]: [...sourceState, ...newItemFromBag],
+            bag: [...bagItemsClone],
+            trash: [...this.state.trash, items],
             change: []
         });
     }
@@ -184,6 +195,9 @@ class App extends Component {
                     <h2>droppableChange</h2>
                     <button
                         onClick={() => this.onSubmitChange(this.state.change, {droppableId: "droppableP1"})}>Change
+                    </button>
+                    <button
+                        onClick={() => this.onSubmitConfirm(this.state.change, {droppableId: "droppableP1"})}>Confirm
                     </button>
                     <Droppable droppableId="droppableChange" direction="horizontal">
                         {(provided, snapshot) => (
