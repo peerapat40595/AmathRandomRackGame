@@ -86,18 +86,13 @@ class App extends Component {
         }
 
         if (source.droppableId === destination.droppableId) {
-            const p1 = reorder(
+            const resultList = reorder(
                 this.getList(source.droppableId),
                 source.index,
                 destination.index
             );
 
-            let state = {p1};
-
-            if (source.droppableId === 'droppableP2') {
-                state = {p2: p1};
-            }
-
+            const state = {[this.id2List[source.droppableId]]: resultList};
             this.setState(state);
         } else {
             const result = move(
