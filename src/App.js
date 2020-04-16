@@ -162,6 +162,7 @@ const getItemStyle = (isDragging, draggableStyle) => ({
     // change background colour if dragging
     background: isDragging ? "lightgreen" : "#424242",
     color: "white",
+    minWidth: 96,
 
     // styles we need to apply on draggables
     ...draggableStyle
@@ -174,6 +175,12 @@ const getListStyle = isDraggingOver => ({
     overflow: "auto",
     minHeight: 64,
 });
+
+const getButtonStyle = () => ({
+    padding: grid * 2,
+    margin: `0 ${grid}px 0 ${grid}px`,
+    minWidth: 128
+})
 
 class App extends Component {
     state = {
@@ -323,6 +330,7 @@ class App extends Component {
                                 )}
                             </Droppable>
                             <Button
+                                style={getButtonStyle()}
                                 disabled={this.state.change.length === 0 || this.state.submit.length > 0 || this.state.p1.length === 8 || this.state.bag.length === 0}
                                 variant="contained" color="primary"
                                 onClick={() => this.onSubmitChange(this.state.change, {droppableId: "droppableP1"})}>
@@ -331,6 +339,7 @@ class App extends Component {
                                     เปลี่ยน </Typography>
                             </Button>
                             <Button
+                                style={getButtonStyle()}
                                 disabled={this.state.submit.length === 0 || this.state.change.length > 0 || (this.state.p1.length === 8 && this.state.bag.length !== 0)}
                                 variant="contained" color="secondary"
                                 onClick={() => this.onSubmitConfirm(this.state.submit, {droppableId: "droppableP1"})}>
@@ -453,6 +462,7 @@ class App extends Component {
                                 )}
                             </Droppable>
                             <Button
+                                style={getButtonStyle()}
                                 disabled={this.state.change.length === 0 || this.state.submit.length > 0 || this.state.p2.length === 8 || this.state.bag.length === 0}
                                 variant="contained" color="primary"
                                 onClick={() => this.onSubmitChange(this.state.change, {droppableId: "droppableP2"})}>
@@ -461,6 +471,7 @@ class App extends Component {
                                     เปลี่ยน </Typography>
                             </Button>
                             <Button
+                                style={getButtonStyle()}
                                 disabled={this.state.submit.length === 0 || this.state.change.length > 0 || (this.state.p2.length === 8 && this.state.bag.length !== 0)}
                                 variant="contained" color="secondary"
                                 onClick={() => this.onSubmitConfirm(this.state.submit, {droppableId: "droppableP2"})}>
