@@ -312,10 +312,12 @@ class App extends Component {
                         )}
                     </Droppable>
                     <button
-                        onClick={() => this.onSubmitChange(this.state.change, {droppableId: "droppableP1"})}>ผู้เล่น 1 เปลี่ยน
+                        onClick={() => this.onSubmitChange(this.state.change, {droppableId: "droppableP1"})}>ผู้เล่น 1
+                        เปลี่ยน
                     </button>
                     <button
-                        onClick={() => this.onSubmitConfirm(this.state.submit, {droppableId: "droppableP1"})}>ผู้เล่น 1 ลง
+                        onClick={() => this.onSubmitConfirm(this.state.submit, {droppableId: "droppableP1"})}>ผู้เล่น 1
+                        ลง
                     </button>
                     <h2>ใส่เบี้ยที่จะเปลี่ยนที่นี่</h2>
                     <Droppable droppableId="droppableChange" direction="horizontal">
@@ -375,7 +377,7 @@ class App extends Component {
                             </div>
                         )}
                     </Droppable>
-                    <h2>P2 Rack</h2>
+                    <h2>ผู้เล่น 2</h2>
                     <Droppable droppableId="droppableP2" direction="horizontal">
                         {(provided, snapshot) => (
                             <div
@@ -405,10 +407,12 @@ class App extends Component {
                         )}
                     </Droppable>
                     <button
-                        onClick={() => this.onSubmitChange(this.state.change, {droppableId: "droppableP2"})}>ผู้เล่น 2 เปลี่ยน
+                        onClick={() => this.onSubmitChange(this.state.change, {droppableId: "droppableP2"})}>ผู้เล่น 2
+                        เปลี่ยน
                     </button>
                     <button
-                        onClick={() => this.onSubmitConfirm(this.state.submit, {droppableId: "droppableP2"})}>ผู้เล่น 2 ลง
+                        onClick={() => this.onSubmitConfirm(this.state.submit, {droppableId: "droppableP2"})}>ผู้เล่น 2
+                        ลง
                     </button>
                 </DragDropContext>
             </div>
