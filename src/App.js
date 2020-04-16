@@ -2,12 +2,121 @@ import React, {Component} from 'react';
 import {DragDropContext, Draggable, Droppable} from 'react-beautiful-dnd';
 import './App.css';
 
+
+let initialItems = [
+    {content: '0', id: 'item-1'},
+    {content: '0', id: 'item-2'},
+    {content: '0', id: 'item-3'},
+    {content: '0', id: 'item-4'},
+    {content: '0', id: 'item-5'},
+    {content: '1', id: 'item-6'},
+    {content: '1', id: 'item-7'},
+    {content: '1', id: 'item-8'},
+    {content: '1', id: 'item-9'},
+    {content: '1', id: 'item-10'},
+    {content: '1', id: 'item-11'},
+    {content: '2', id: 'item-12'},
+    {content: '2', id: 'item-13'},
+    {content: '2', id: 'item-14'},
+    {content: '2', id: 'item-15'},
+    {content: '2', id: 'item-16'},
+    {content: '2', id: 'item-17'},
+    {content: '3', id: 'item-18'},
+    {content: '3', id: 'item-19'},
+    {content: '3', id: 'item-20'},
+    {content: '3', id: 'item-21'},
+    {content: '3', id: 'item-22'},
+    {content: '4', id: 'item-23'},
+    {content: '4', id: 'item-24'},
+    {content: '4', id: 'item-25'},
+    {content: '4', id: 'item-26'},
+    {content: '4', id: 'item-27'},
+    {content: '5', id: 'item-28'},
+    {content: '5', id: 'item-29'},
+    {content: '5', id: 'item-30'},
+    {content: '5', id: 'item-31'},
+    {content: '6', id: 'item-32'},
+    {content: '6', id: 'item-33'},
+    {content: '6', id: 'item-34'},
+    {content: '6', id: 'item-35'},
+    {content: '7', id: 'item-36'},
+    {content: '7', id: 'item-37'},
+    {content: '7', id: 'item-38'},
+    {content: '7', id: 'item-39'},
+    {content: '8', id: 'item-40'},
+    {content: '8', id: 'item-41'},
+    {content: '8', id: 'item-42'},
+    {content: '8', id: 'item-43'},
+    {content: '9', id: 'item-44'},
+    {content: '9', id: 'item-45'},
+    {content: '9', id: 'item-46'},
+    {content: '9', id: 'item-47'},
+    {content: '10', id: 'item-48'},
+    {content: '10', id: 'item-49'},
+    {content: '11', id: 'item-50'},
+    {content: '12', id: 'item-51'},
+    {content: '12', id: 'item-52'},
+    {content: '13', id: 'item-53'},
+    {content: '14', id: 'item-54'},
+    {content: '15', id: 'item-55'},
+    {content: '16', id: 'item-56'},
+    {content: '17', id: 'item-57'},
+    {content: '18', id: 'item-58'},
+    {content: '19', id: 'item-59'},
+    {content: '20', id: 'item-60'},
+    {content: '+', id: 'item-61'},
+    {content: '+', id: 'item-62'},
+    {content: '+', id: 'item-63'},
+    {content: '+', id: 'item-64'},
+    {content: '-', id: 'item-65'},
+    {content: '-', id: 'item-66'},
+    {content: '-', id: 'item-67'},
+    {content: '-', id: 'item-68'},
+    {content: '+/-', id: 'item-69'},
+    {content: '+/-', id: 'item-70'},
+    {content: '+/-', id: 'item-71'},
+    {content: '+/-', id: 'item-72'},
+    {content: 'x', id: 'item-73'},
+    {content: 'x', id: 'item-74'},
+    {content: 'x', id: 'item-75'},
+    {content: 'x', id: 'item-76'},
+    {content: '÷', id: 'item-77'},
+    {content: '÷', id: 'item-78'},
+    {content: '÷', id: 'item-79'},
+    {content: '÷', id: 'item-80'},
+    {content: 'x/÷', id: 'item-81'},
+    {content: 'x/÷', id: 'item-82'},
+    {content: 'x/÷', id: 'item-83'},
+    {content: 'x/÷', id: 'item-84'},
+    {content: '?', id: 'item-85'},
+    {content: '?', id: 'item-86'},
+    {content: '?', id: 'item-87'},
+    {content: '?', id: 'item-88'},
+    {content: '=', id: 'item-89'},
+    {content: '=', id: 'item-90'},
+    {content: '=', id: 'item-91'},
+    {content: '=', id: 'item-92'},
+    {content: '=', id: 'item-93'},
+    {content: '=', id: 'item-94'},
+    {content: '=', id: 'item-95'},
+    {content: '=', id: 'item-96'},
+    {content: '=', id: 'item-97'},
+    {content: '=', id: 'item-98'},
+    {content: '=', id: 'item-99'},
+    {content: '=', id: 'item-100'},
+]
+
+function shuffle(array) {
+    array.sort(() => Math.random() - 0.5);
+}
+
 // fake data generator
-const getItems = (count, offset = 0) =>
-    Array.from({length: count}, (v, k) => k).map(k => ({
-        id: `item-${k + offset}`,
-        content: `item ${k + offset}`
-    }));
+const getItems = (count = 0) => {
+    shuffle(initialItems)
+    const removed = initialItems.splice(0, count)
+    console.log(Object.keys({removed}).pop(), removed)
+    return Array.from(removed)
+}
 
 // a little function to help us with reordering the result
 const reorder = (list, startIndex, endIndex) => {
@@ -57,9 +166,6 @@ const getListStyle = isDraggingOver => ({
     overflow: "auto"
 });
 
-function shuffle(array) {
-    array.sort(() => Math.random() - 0.5);
-}
 
 const getRandomItems = (items, count = 0) => {
     const itemsClone = Array.from(items);
@@ -70,11 +176,11 @@ const getRandomItems = (items, count = 0) => {
 
 class App extends Component {
     state = {
-        p1: getRandomItems(getItems(10), 5),
-        p2: getItems(5, 10),
+        p1: [],
+        p2: [],
         change: [],
-        submit: getItems(5, 20),
-        bag: getItems(5, 100),
+        submit: [],
+        bag: [],
         trash: []
     };
 
@@ -90,9 +196,22 @@ class App extends Component {
         droppableSubmit: 'submit',
     };
 
+    componentDidMount() {
+        this.setState(
+            {
+                p1: getItems(8),
+                p2: getItems(8),
+                submit: [],
+                bag: getItems(84),
+            }
+        )
+    }
+
+
     getList = id => this.state[this.id2List[id]];
 
     onSubmitChange = (items, destination) => {
+        console.log(Object.keys({"state": ""}).pop(), getItems(5))
         const numberOfChange = items.length
 
         const bagItemsClone = Array.from(this.state.bag);
@@ -160,7 +279,7 @@ class App extends Component {
     // But in this example everything is just done in one place for simplicity
     render() {
         return (
-            <div className="App">
+            <div className="App" id="App">
                 <DragDropContext onDragEnd={this.onDragEnd}>
                     <h2>P1 Rack</h2>
                     {this.state.bag.map((item, index) => (<span id={index}>{item.content}</span>))}
