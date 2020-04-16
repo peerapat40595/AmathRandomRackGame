@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ff19e96557400be1264fc06dbacdc6ee",
+    "revision": "cbfc61121718db833ed5b239827930f7",
     "url": "/AmathRandomRackGame/index.html"
   },
   {
-    "revision": "b48dfd67f319d39a93e6",
+    "revision": "11e80c2a48a4e853132c",
     "url": "/AmathRandomRackGame/static/css/main.7b1466b3.chunk.css"
   },
   {
-    "revision": "37ebf7aef35ba24314b6",
-    "url": "/AmathRandomRackGame/static/js/2.15fff216.chunk.js"
+    "revision": "2c9b8d061672b50825e6",
+    "url": "/AmathRandomRackGame/static/js/2.0a083099.chunk.js"
   },
   {
     "revision": "0749163b59fbee32225059cb60c18af6",
-    "url": "/AmathRandomRackGame/static/js/2.15fff216.chunk.js.LICENSE.txt"
+    "url": "/AmathRandomRackGame/static/js/2.0a083099.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "b48dfd67f319d39a93e6",
-    "url": "/AmathRandomRackGame/static/js/main.a5dac9fe.chunk.js"
+    "revision": "11e80c2a48a4e853132c",
+    "url": "/AmathRandomRackGame/static/js/main.108098ec.chunk.js"
   },
   {
     "revision": "bfe43733d765672f52b6",
