@@ -156,13 +156,13 @@ const grid = 8;
 const getItemStyle = (isDragging, draggableStyle) => ({
     // some basic styles to make the p1 look a bit nicer
     userSelect: "none",
-    padding: grid * 2,
+    padding: grid,
     margin: `0 ${grid}px 0 0`,
 
     // change background colour if dragging
     background: isDragging ? "lightgreen" : "#424242",
     color: "white",
-    minWidth: 96,
+    minWidth: 64,
 
     // styles we need to apply on draggables
     ...draggableStyle
@@ -179,6 +179,7 @@ const getListStyle = isDraggingOver => ({
 const getButtonStyle = () => ({
     padding: grid * 2,
     margin: grid,
+    marginLeft: 0,
     minWidth: 128,
     display: "flex"
 })
@@ -300,7 +301,7 @@ class App extends Component {
                         >
                             <h2>ผู้เล่น 1</h2>
                         </ExpansionPanelSummary>
-                        <ExpansionPanelDetails>
+                        <ExpansionPanelDetails style={{display: "flex", flexDirection: "column"}}>
                             <Droppable droppableId="droppableP1" direction="horizontal">
                                 {(provided, snapshot) => (
                                     <div
@@ -323,7 +324,7 @@ class App extends Component {
                                                             provided.draggableProps.style
                                                         )}>
                                                         <CardContent>
-                                                            <Typography variant="h3" component="h4">
+                                                            <Typography variant="h5" component="h6">
                                                                 {item.content}
                                                             </Typography>
                                                         </CardContent>
@@ -335,7 +336,7 @@ class App extends Component {
                                     </div>
                                 )}
                             </Droppable>
-                            <div>
+                            <div style={{display: "flex"}}>
 
                                 <Button
                                     style={getButtonStyle()}
@@ -390,7 +391,7 @@ class App extends Component {
                                                     provided.draggableProps.style
                                                 )}>
                                                 <CardContent>
-                                                    <Typography variant="h3" component="h4">
+                                                    <Typography variant="h5" component="h6">
                                                         {item.content}
                                                     </Typography> </CardContent>
                                             </Card>
@@ -425,7 +426,7 @@ class App extends Component {
                                                     provided.draggableProps.style
                                                 )}>
                                                 <CardContent>
-                                                    <Typography variant="h3" component="h4">
+                                                    <Typography variant="h5" component="h6">
                                                         {item.content}
                                                     </Typography> </CardContent>
                                             </Card>
@@ -442,16 +443,13 @@ class App extends Component {
                             expandIcon={<ExpandMoreIcon/>}>
                             <h2>ผู้เล่น 2</h2>
                         </ExpansionPanelSummary>
-                        <ExpansionPanelDetails>
+                        <ExpansionPanelDetails style={{display: "flex", flexDirection: "column"}}>
                             <Droppable droppableId="droppableP2" direction="horizontal">
                                 {(provided, snapshot) => (
                                     <div
                                         ref={provided.innerRef}
                                         style={
-                                            {
-                                                minHeight: 64,
-                                                ...getListStyle(snapshot.isDraggingOver)
-                                            }
+                                            getListStyle(snapshot.isDraggingOver)
                                         }>
                                         {this.state.p2.map((item, index) => (
                                             <Draggable
@@ -468,7 +466,7 @@ class App extends Component {
                                                             provided.draggableProps.style
                                                         )}>
                                                         <CardContent>
-                                                            <Typography variant="h3" component="h4">
+                                                            <Typography variant="h5" component="h6">
                                                                 {item.content}
                                                             </Typography> </CardContent>
                                                     </Card>
@@ -479,7 +477,7 @@ class App extends Component {
                                     </div>
                                 )}
                             </Droppable>
-                            <div>
+                            <div style={{display: "flex"}}>
                                 <Button
                                     style={getButtonStyle()}
                                     disabled={this.state.change.length === 0 || this.state.submit.length > 0 || this.state.p2.length === 8 || this.state.bag.length === 0}
