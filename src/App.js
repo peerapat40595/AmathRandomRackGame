@@ -306,7 +306,7 @@ class App extends Component {
                         >
                             <h2>ผู้เล่น 1</h2>
                         </ExpansionPanelSummary>
-                        <ExpansionPanelDetails style={{display: "flex", flexDirection: "column"}}>
+                        {this.state.p1Turn && <ExpansionPanelDetails style={{display: "flex", flexDirection: "column"}}>
                             <Droppable droppableId="droppableP1" direction="horizontal">
                                 {(provided, snapshot) => (
                                     <div
@@ -364,7 +364,7 @@ class App extends Component {
                                     <Typography variant="h5" component="h6">
                                         ลง </Typography> </Button>
                             </div>
-                        </ExpansionPanelDetails>
+                        </ExpansionPanelDetails>}
 
                     </ExpansionPanel>
 
@@ -440,7 +440,7 @@ class App extends Component {
                             expandIcon={<ExpandMoreIcon/>}>
                             <h2>ผู้เล่น 2</h2>
                         </ExpansionPanelSummary>
-                        <ExpansionPanelDetails style={{display: "flex", flexDirection: "column"}}>
+                        {this.state.p2Turn && <ExpansionPanelDetails style={{display: "flex", flexDirection: "column"}}>
                             <Droppable droppableId="droppableP2" direction="horizontal">
                                 {(provided, snapshot) => (
                                     <div
@@ -496,7 +496,7 @@ class App extends Component {
                                     <Typography variant="h5" component="h6">
                                         ลง </Typography>
                                 </Button></div>
-                        </ExpansionPanelDetails>
+                        </ExpansionPanelDetails>}
 
                     </ExpansionPanel>
 
