@@ -170,14 +170,6 @@ const getListStyle = isDraggingOver => ({
     overflow: "auto"
 });
 
-
-const getRandomItems = (items, count = 0) => {
-    const itemsClone = Array.from(items);
-    shuffle(itemsClone)
-    const removed = itemsClone.splice(0, count)
-    return removed
-}
-
 class App extends Component {
     state = {
         p1: [],
