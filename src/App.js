@@ -171,7 +171,8 @@ const getListStyle = isDraggingOver => ({
     background: isDraggingOver ? "lightblue" : "lightgrey",
     display: "flex",
     padding: grid,
-    overflow: "auto"
+    overflow: "auto",
+    minHeight: 64,
 });
 
 class App extends Component {
@@ -292,10 +293,7 @@ class App extends Component {
                                     <div
                                         ref={provided.innerRef}
                                         style={
-                                            {
-                                                minHeight: 64,
-                                                ...getListStyle(snapshot.isDraggingOver)
-                                            }
+                                            getListStyle(snapshot.isDraggingOver)
                                         }>
                                         {this.state.p1.map((item, index) => (
                                             <Draggable
@@ -327,17 +325,17 @@ class App extends Component {
                             <Button
                                 disabled={this.state.change.length === 0 || this.state.submit.length > 0 || this.state.p1.length === 8 || this.state.bag.length === 0}
                                 variant="contained" color="primary"
-                                onClick={() => this.onSubmitChange(this.state.change, {droppableId: "droppableP1"})}>ผู้เล่น
-                                1
-                                เปลี่ยน
+                                onClick={() => this.onSubmitChange(this.state.change, {droppableId: "droppableP1"})}>
+
+                                <Typography variant="h3" component="h4">
+                                    เปลี่ยน </Typography>
                             </Button>
                             <Button
                                 disabled={this.state.submit.length === 0 || this.state.change.length > 0 || (this.state.p1.length === 8 && this.state.bag.length !== 0)}
                                 variant="contained" color="secondary"
-                                onClick={() => this.onSubmitConfirm(this.state.submit, {droppableId: "droppableP1"})}>ผู้เล่น
-                                1
-                                ลง
-                            </Button>
+                                onClick={() => this.onSubmitConfirm(this.state.submit, {droppableId: "droppableP1"})}>
+                                <Typography variant="h3" component="h4">
+                                    ลง </Typography> </Button>
                         </ExpansionPanelDetails>
 
                     </ExpansionPanel>
@@ -348,10 +346,7 @@ class App extends Component {
                             <div
                                 ref={provided.innerRef}
                                 style={
-                                    {
-                                        minHeight: 60,
-                                        ...getListStyle(snapshot.isDraggingOver)
-                                    }
+                                    getListStyle(snapshot.isDraggingOver)
                                 }>
                                 {this.state.change.map((item, index) => (
                                     <Draggable
@@ -370,7 +365,7 @@ class App extends Component {
                                                 <CardContent>
                                                     <Typography variant="h3" component="h4">
                                                         {item.content}
-                                                    </Typography>                                                </CardContent>
+                                                    </Typography> </CardContent>
                                             </Card>
                                         )}
                                     </Draggable>
@@ -405,7 +400,7 @@ class App extends Component {
                                                 <CardContent>
                                                     <Typography variant="h3" component="h4">
                                                         {item.content}
-                                                    </Typography>                                                </CardContent>
+                                                    </Typography> </CardContent>
                                             </Card>
                                         )}
                                     </Draggable>
@@ -448,7 +443,7 @@ class App extends Component {
                                                         <CardContent>
                                                             <Typography variant="h3" component="h4">
                                                                 {item.content}
-                                                            </Typography>                                                        </CardContent>
+                                                            </Typography> </CardContent>
                                                     </Card>
                                                 )}
                                             </Draggable>
@@ -460,16 +455,17 @@ class App extends Component {
                             <Button
                                 disabled={this.state.change.length === 0 || this.state.submit.length > 0 || this.state.p2.length === 8 || this.state.bag.length === 0}
                                 variant="contained" color="primary"
-                                onClick={() => this.onSubmitChange(this.state.change, {droppableId: "droppableP2"})}>ผู้เล่น
-                                2
-                                เปลี่ยน
+                                onClick={() => this.onSubmitChange(this.state.change, {droppableId: "droppableP2"})}>
+
+                                <Typography variant="h3" component="h4">
+                                    เปลี่ยน </Typography>
                             </Button>
                             <Button
                                 disabled={this.state.submit.length === 0 || this.state.change.length > 0 || (this.state.p2.length === 8 && this.state.bag.length !== 0)}
                                 variant="contained" color="secondary"
-                                onClick={() => this.onSubmitConfirm(this.state.submit, {droppableId: "droppableP2"})}>ผู้เล่น
-                                2
-                                ลง
+                                onClick={() => this.onSubmitConfirm(this.state.submit, {droppableId: "droppableP2"})}>
+                                <Typography variant="h3" component="h4">
+                                    ลง </Typography>
                             </Button> </ExpansionPanelDetails>
                     </ExpansionPanel>
 
