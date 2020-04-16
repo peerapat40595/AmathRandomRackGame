@@ -2,6 +2,10 @@ import React, {Component} from 'react';
 import {DragDropContext, Draggable, Droppable} from 'react-beautiful-dnd';
 import './App.css';
 import Button from '@material-ui/core/Button';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 let initialItems = [
     {content: '0', id: 'item-1'},
@@ -416,8 +420,16 @@ class App extends Component {
                     </Button>
                 </DragDropContext>
                 <div id="bag">
-                    <h2>เบี้ยในถุง</h2>
-                    {this.state.bag.map((item, index) => (<span id={index}>{item.content}</span>))}
+                    <ExpansionPanel>
+                        <ExpansionPanelSummary
+                            expandIcon={<ExpandMoreIcon />}
+                        >
+                            <h2>เบี้ยในถุง</h2>
+                        </ExpansionPanelSummary>
+                        <ExpansionPanelDetails>
+                            {this.state.bag.map((item, index) => (<span id={index}>{item.content}</span>))}
+                        </ExpansionPanelDetails>
+                    </ExpansionPanel>
                 </div>
             </div>
         );
