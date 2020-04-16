@@ -284,45 +284,55 @@ class App extends Component {
         return (
             <div className="App" id="App">
                 <DragDropContext onDragEnd={this.onDragEnd}>
-                    <h2>ผู้เล่น 1</h2>
-                    <Droppable droppableId="droppableP1" direction="horizontal">
-                        {(provided, snapshot) => (
-                            <div
-                                ref={provided.innerRef}
-                                style={getListStyle(snapshot.isDraggingOver)}>
-                                {this.state.p1.map((item, index) => (
-                                    <Draggable
-                                        key={item.id}
-                                        draggableId={item.id}
-                                        index={index}>
-                                        {(provided, snapshot) => (
-                                            <div
-                                                ref={provided.innerRef}
-                                                {...provided.draggableProps}
-                                                {...provided.dragHandleProps}
-                                                style={getItemStyle(
-                                                    snapshot.isDragging,
-                                                    provided.draggableProps.style
-                                                )}>
-                                                {item.content}
-                                            </div>
-                                        )}
-                                    </Draggable>
-                                ))}
-                                {provided.placeholder}
-                            </div>
-                        )}
-                    </Droppable>
-                    <Button
-                        variant="contained" color="primary"
-                        onClick={() => this.onSubmitChange(this.state.change, {droppableId: "droppableP1"})}>ผู้เล่น 1
-                        เปลี่ยน
-                    </Button>
-                    <Button
-                        variant="contained" color="secondary"
-                        onClick={() => this.onSubmitConfirm(this.state.submit, {droppableId: "droppableP1"})}>ผู้เล่น 1
-                        ลง
-                    </Button>
+                    <ExpansionPanel>
+                        <ExpansionPanelSummary
+                            expandIcon={<ExpandMoreIcon/>}
+                        >
+                            <h2>ผู้เล่น 1</h2>
+                        </ExpansionPanelSummary>
+                        <ExpansionPanelDetails>
+                            <Droppable droppableId="droppableP1" direction="horizontal">
+                                {(provided, snapshot) => (
+                                    <div
+                                        ref={provided.innerRef}
+                                        style={getListStyle(snapshot.isDraggingOver)}>
+                                        {this.state.p1.map((item, index) => (
+                                            <Draggable
+                                                key={item.id}
+                                                draggableId={item.id}
+                                                index={index}>
+                                                {(provided, snapshot) => (
+                                                    <div
+                                                        ref={provided.innerRef}
+                                                        {...provided.draggableProps}
+                                                        {...provided.dragHandleProps}
+                                                        style={getItemStyle(
+                                                            snapshot.isDragging,
+                                                            provided.draggableProps.style
+                                                        )}>
+                                                        {item.content}
+                                                    </div>
+                                                )}
+                                            </Draggable>
+                                        ))}
+                                        {provided.placeholder}
+                                    </div>
+                                )}
+                            </Droppable> </ExpansionPanelDetails>
+                        <Button
+                            variant="contained" color="primary"
+                            onClick={() => this.onSubmitChange(this.state.change, {droppableId: "droppableP1"})}>ผู้เล่น
+                            1
+                            เปลี่ยน
+                        </Button>
+                        <Button
+                            variant="contained" color="secondary"
+                            onClick={() => this.onSubmitConfirm(this.state.submit, {droppableId: "droppableP1"})}>ผู้เล่น
+                            1
+                            ลง
+                        </Button>
+                    </ExpansionPanel>
+
                     <h2>ใส่เบี้ยที่จะเปลี่ยนที่นี่</h2>
                     <Droppable droppableId="droppableChange" direction="horizontal">
                         {(provided, snapshot) => (
@@ -381,48 +391,60 @@ class App extends Component {
                             </div>
                         )}
                     </Droppable>
-                    <h2>ผู้เล่น 2</h2>
-                    <Droppable droppableId="droppableP2" direction="horizontal">
-                        {(provided, snapshot) => (
-                            <div
-                                ref={provided.innerRef}
-                                style={getListStyle(snapshot.isDraggingOver)}>
-                                {this.state.p2.map((item, index) => (
-                                    <Draggable
-                                        key={item.id}
-                                        draggableId={item.id}
-                                        index={index}>
-                                        {(provided, snapshot) => (
-                                            <div
-                                                ref={provided.innerRef}
-                                                {...provided.draggableProps}
-                                                {...provided.dragHandleProps}
-                                                style={getItemStyle(
-                                                    snapshot.isDragging,
-                                                    provided.draggableProps.style
-                                                )}>
-                                                {item.content}
-                                            </div>
-                                        )}
-                                    </Draggable>
-                                ))}
-                                {provided.placeholder}
-                            </div>
-                        )}
-                    </Droppable>
-                    <Button
-                        onClick={() => this.onSubmitChange(this.state.change, {droppableId: "droppableP2"})}>ผู้เล่น 2
-                        เปลี่ยน
-                    </Button>
-                    <Button
-                        onClick={() => this.onSubmitConfirm(this.state.submit, {droppableId: "droppableP2"})}>ผู้เล่น 2
-                        ลง
-                    </Button>
+                    <ExpansionPanel>
+                        <ExpansionPanelSummary
+                            expandIcon={<ExpandMoreIcon/>}
+                        >
+                            <h2>ผู้เล่น 2</h2>
+                        </ExpansionPanelSummary>
+                        <ExpansionPanelDetails>
+                            <Droppable droppableId="droppableP2" direction="horizontal">
+                                {(provided, snapshot) => (
+                                    <div
+                                        ref={provided.innerRef}
+                                        style={getListStyle(snapshot.isDraggingOver)}>
+                                        {this.state.p2.map((item, index) => (
+                                            <Draggable
+                                                key={item.id}
+                                                draggableId={item.id}
+                                                index={index}>
+                                                {(provided, snapshot) => (
+                                                    <div
+                                                        ref={provided.innerRef}
+                                                        {...provided.draggableProps}
+                                                        {...provided.dragHandleProps}
+                                                        style={getItemStyle(
+                                                            snapshot.isDragging,
+                                                            provided.draggableProps.style
+                                                        )}>
+                                                        {item.content}
+                                                    </div>
+                                                )}
+                                            </Draggable>
+                                        ))}
+                                        {provided.placeholder}
+                                    </div>
+                                )}
+                            </Droppable>
+                            <Button
+                                variant="contained" color="primary"
+                                onClick={() => this.onSubmitChange(this.state.change, {droppableId: "droppableP2"})}>ผู้เล่น
+                                2
+                                เปลี่ยน
+                            </Button>
+                            <Button
+                                variant="contained" color="secondary"
+                                onClick={() => this.onSubmitConfirm(this.state.submit, {droppableId: "droppableP2"})}>ผู้เล่น
+                                2
+                                ลง
+                            </Button> </ExpansionPanelDetails>
+                    </ExpansionPanel>
+
                 </DragDropContext>
                 <div id="bag">
                     <ExpansionPanel>
                         <ExpansionPanelSummary
-                            expandIcon={<ExpandMoreIcon />}
+                            expandIcon={<ExpandMoreIcon/>}
                         >
                             <h2>เบี้ยในถุง</h2>
                         </ExpansionPanelSummary>
