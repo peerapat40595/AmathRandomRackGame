@@ -289,7 +289,12 @@ class App extends Component {
                                 {(provided, snapshot) => (
                                     <div
                                         ref={provided.innerRef}
-                                        style={getListStyle(snapshot.isDraggingOver)}>
+                                        style={
+                                            {
+                                                minHeight: 64,
+                                                ...getListStyle(snapshot.isDraggingOver)
+                                            }
+                                        }>
                                         {this.state.p1.map((item, index) => (
                                             <Draggable
                                                 key={item.id}
@@ -316,14 +321,14 @@ class App extends Component {
                                 )}
                             </Droppable>
                             <Button
-                                disabled={this.state.change.length === 0 || this.state.submit.length > 0 || this.state.p1.length === 8 || this.state.bag.length === 0 }
+                                disabled={this.state.change.length === 0 || this.state.submit.length > 0 || this.state.p1.length === 8 || this.state.bag.length === 0}
                                 variant="contained" color="primary"
                                 onClick={() => this.onSubmitChange(this.state.change, {droppableId: "droppableP1"})}>ผู้เล่น
                                 1
                                 เปลี่ยน
                             </Button>
                             <Button
-                                disabled={this.state.submit.length === 0 || this.state.change.length > 0  || (this.state.p1.length === 8 && this.state.bag.length !== 0) }
+                                disabled={this.state.submit.length === 0 || this.state.change.length > 0 || (this.state.p1.length === 8 && this.state.bag.length !== 0)}
                                 variant="contained" color="secondary"
                                 onClick={() => this.onSubmitConfirm(this.state.submit, {droppableId: "droppableP1"})}>ผู้เล่น
                                 1
@@ -414,7 +419,12 @@ class App extends Component {
                                 {(provided, snapshot) => (
                                     <div
                                         ref={provided.innerRef}
-                                        style={getListStyle(snapshot.isDraggingOver)}>
+                                        style={
+                                            {
+                                                minHeight: 64,
+                                                ...getListStyle(snapshot.isDraggingOver)
+                                            }
+                                        }>
                                         {this.state.p2.map((item, index) => (
                                             <Draggable
                                                 key={item.id}
@@ -441,14 +451,14 @@ class App extends Component {
                                 )}
                             </Droppable>
                             <Button
-                                disabled={this.state.change.length === 0 || this.state.submit.length > 0 || this.state.p2.length === 8 || this.state.bag.length === 0 }
+                                disabled={this.state.change.length === 0 || this.state.submit.length > 0 || this.state.p2.length === 8 || this.state.bag.length === 0}
                                 variant="contained" color="primary"
                                 onClick={() => this.onSubmitChange(this.state.change, {droppableId: "droppableP2"})}>ผู้เล่น
                                 2
                                 เปลี่ยน
                             </Button>
                             <Button
-                                disabled={this.state.submit.length === 0 || this.state.change.length > 0  || (this.state.p2.length === 8 && this.state.bag.length !== 0) }
+                                disabled={this.state.submit.length === 0 || this.state.change.length > 0 || (this.state.p2.length === 8 && this.state.bag.length !== 0)}
                                 variant="contained" color="secondary"
                                 onClick={() => this.onSubmitConfirm(this.state.submit, {droppableId: "droppableP2"})}>ผู้เล่น
                                 2
