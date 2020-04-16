@@ -366,7 +366,10 @@ class App extends Component {
                             <div
                                 ref={provided.innerRef}
                                 style={
-                                    getListStyle(snapshot.isDraggingOver)
+                                    {
+                                        ...getListStyle(snapshot.isDraggingOver),
+                                        minHeight: 96,
+                                    }
                                 }>
                                 {this.state.change.map((item, index) => (
                                     <Draggable
@@ -400,8 +403,8 @@ class App extends Component {
                             <div
                                 ref={provided.innerRef}
                                 style={{
-                                    minHeight: 60,
-                                    ...getListStyle(snapshot.isDraggingOver)
+                                    ...getListStyle(snapshot.isDraggingOver),
+                                    minHeight: 96,
                                 }}>
                                 {this.state.submit.map((item, index) => (
                                     <Draggable
