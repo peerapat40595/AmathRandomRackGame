@@ -310,10 +310,12 @@ class App extends Component {
                         )}
                     </Droppable>
                     <Button
+                        variant="contained" color="primary"
                         onClick={() => this.onSubmitChange(this.state.change, {droppableId: "droppableP1"})}>ผู้เล่น 1
                         เปลี่ยน
                     </Button>
                     <Button
+                        variant="contained" color="secondary"
                         onClick={() => this.onSubmitConfirm(this.state.submit, {droppableId: "droppableP1"})}>ผู้เล่น 1
                         ลง
                     </Button>
