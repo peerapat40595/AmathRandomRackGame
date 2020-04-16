@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {DragDropContext, Draggable, Droppable} from 'react-beautiful-dnd';
 import './App.css';
-
+import Button from '@material-ui/core/Button';
 
 let initialItems = [
     {content: '0', id: 'item-1'},
@@ -310,14 +310,14 @@ class App extends Component {
                             </div>
                         )}
                     </Droppable>
-                    <button
+                    <Button
                         onClick={() => this.onSubmitChange(this.state.change, {droppableId: "droppableP1"})}>ผู้เล่น 1
                         เปลี่ยน
-                    </button>
-                    <button
+                    </Button>
+                    <Button
                         onClick={() => this.onSubmitConfirm(this.state.submit, {droppableId: "droppableP1"})}>ผู้เล่น 1
                         ลง
-                    </button>
+                    </Button>
                     <h2>ใส่เบี้ยที่จะเปลี่ยนที่นี่</h2>
                     <Droppable droppableId="droppableChange" direction="horizontal">
                         {(provided, snapshot) => (
@@ -405,14 +405,14 @@ class App extends Component {
                             </div>
                         )}
                     </Droppable>
-                    <button
+                    <Button
                         onClick={() => this.onSubmitChange(this.state.change, {droppableId: "droppableP2"})}>ผู้เล่น 2
                         เปลี่ยน
-                    </button>
-                    <button
+                    </Button>
+                    <Button
                         onClick={() => this.onSubmitConfirm(this.state.submit, {droppableId: "droppableP2"})}>ผู้เล่น 2
                         ลง
-                    </button>
+                    </Button>
                 </DragDropContext>
                 <div id="bag">
                     {this.state.bag.map((item, index) => (<span id={index}>{item.content}</span>))}
