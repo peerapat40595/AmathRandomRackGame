@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/AmathRandomRackGame/precache-manifest.c64a56a68434c9c7dade7fc1f8759a8b.js"
+  "/AmathRandomRackGame/precache-manifest.2d3e25abad86c059a58e2fb1503e0d64.js"
 );
 
 self.addEventListener('message', (event) => {
