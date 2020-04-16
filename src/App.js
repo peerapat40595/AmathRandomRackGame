@@ -189,7 +189,9 @@ class App extends Component {
         change: [],
         submit: [],
         bag: [],
-        trash: []
+        trash: [],
+        p1Turn: false,
+        p2Turn: false,
     };
 
     /**
@@ -211,6 +213,8 @@ class App extends Component {
                 p2: getItems(8),
                 submit: [],
                 bag: getItems(84),
+                p1Turn: false,
+                p2Turn: false,
             }
         )
     }
@@ -288,7 +292,8 @@ class App extends Component {
         return (
             <div className="App" id="App">
                 <DragDropContext onDragEnd={this.onDragEnd}>
-                    <ExpansionPanel>
+                    <ExpansionPanel expanded={this.state.p1Turn}
+                                    onChange={() => this.setState({p1Turn: !this.state.p1Turn})}>
                         <ExpansionPanelSummary
                             expandIcon={<ExpandMoreIcon/>}
                         >
@@ -333,7 +338,10 @@ class App extends Component {
                                 style={getButtonStyle()}
                                 disabled={this.state.change.length === 0 || this.state.submit.length > 0 || this.state.p1.length === 8 || this.state.bag.length === 0}
                                 variant="contained" color="primary"
-                                onClick={() => this.onSubmitChange(this.state.change, {droppableId: "droppableP1"})}>
+                                onClick={() => {
+                                    this.onSubmitChange(this.state.change, {droppableId: "droppableP1"})
+                                    this.setState({p1Turn: false, p2Turn: true})
+                                }}>
 
                                 <Typography variant="h3" component="h4">
                                     เปลี่ยน </Typography>
@@ -342,7 +350,10 @@ class App extends Component {
                                 style={getButtonStyle()}
                                 disabled={this.state.submit.length === 0 || this.state.change.length > 0 || (this.state.p1.length === 8 && this.state.bag.length !== 0)}
                                 variant="contained" color="secondary"
-                                onClick={() => this.onSubmitConfirm(this.state.submit, {droppableId: "droppableP1"})}>
+                                onClick={() => {
+                                    this.onSubmitConfirm(this.state.submit, {droppableId: "droppableP1"})
+                                    this.setState({p1Turn: false, p2Turn: true})
+                                }}>
                                 <Typography variant="h3" component="h4">
                                     ลง </Typography> </Button>
                         </ExpansionPanelDetails>
@@ -418,10 +429,10 @@ class App extends Component {
                             </div>
                         )}
                     </Droppable>
-                    <ExpansionPanel>
+                    <ExpansionPanel expanded={this.state.p2Turn}
+                                    onChange={() => this.setState({p2Turn: !this.state.p2Turn})}>
                         <ExpansionPanelSummary
-                            expandIcon={<ExpandMoreIcon/>}
-                        >
+                            expandIcon={<ExpandMoreIcon/>}>
                             <h2>ผู้เล่น 2</h2>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails>
@@ -465,8 +476,10 @@ class App extends Component {
                                 style={getButtonStyle()}
                                 disabled={this.state.change.length === 0 || this.state.submit.length > 0 || this.state.p2.length === 8 || this.state.bag.length === 0}
                                 variant="contained" color="primary"
-                                onClick={() => this.onSubmitChange(this.state.change, {droppableId: "droppableP2"})}>
-
+                                onClick={() => {
+                                    this.onSubmitChange(this.state.change, {droppableId: "droppableP2"})
+                                    this.setState({p1Turn: true, p2Turn: false})
+                                }}>
                                 <Typography variant="h3" component="h4">
                                     เปลี่ยน </Typography>
                             </Button>
@@ -474,7 +487,10 @@ class App extends Component {
                                 style={getButtonStyle()}
                                 disabled={this.state.submit.length === 0 || this.state.change.length > 0 || (this.state.p2.length === 8 && this.state.bag.length !== 0)}
                                 variant="contained" color="secondary"
-                                onClick={() => this.onSubmitConfirm(this.state.submit, {droppableId: "droppableP2"})}>
+                                onClick={() => {
+                                    this.onSubmitConfirm(this.state.submit, {droppableId: "droppableP2"})
+                                    this.setState({p1Turn: true, p2Turn: false})
+                                }}>
                                 <Typography variant="h3" component="h4">
                                     ลง </Typography>
                             </Button> </ExpansionPanelDetails>
