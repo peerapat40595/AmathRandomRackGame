@@ -6,6 +6,8 @@ import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 let initialItems = [
     {content: '0', id: 'item-1'},
@@ -294,7 +296,7 @@ class App extends Component {
                                                 draggableId={item.id}
                                                 index={index}>
                                                 {(provided, snapshot) => (
-                                                    <div
+                                                    <Card
                                                         ref={provided.innerRef}
                                                         {...provided.draggableProps}
                                                         {...provided.dragHandleProps}
@@ -302,27 +304,31 @@ class App extends Component {
                                                             snapshot.isDragging,
                                                             provided.draggableProps.style
                                                         )}>
-                                                        {item.content}
-                                                    </div>
+                                                        <CardContent>
+                                                            {item.content}
+                                                        </CardContent>
+                                                    </Card>
                                                 )}
                                             </Draggable>
                                         ))}
                                         {provided.placeholder}
                                     </div>
                                 )}
-                            </Droppable> </ExpansionPanelDetails>
-                        <Button
-                            variant="contained" color="primary"
-                            onClick={() => this.onSubmitChange(this.state.change, {droppableId: "droppableP1"})}>ผู้เล่น
-                            1
-                            เปลี่ยน
-                        </Button>
-                        <Button
-                            variant="contained" color="secondary"
-                            onClick={() => this.onSubmitConfirm(this.state.submit, {droppableId: "droppableP1"})}>ผู้เล่น
-                            1
-                            ลง
-                        </Button>
+                            </Droppable>
+                            <Button
+                                variant="contained" color="primary"
+                                onClick={() => this.onSubmitChange(this.state.change, {droppableId: "droppableP1"})}>ผู้เล่น
+                                1
+                                เปลี่ยน
+                            </Button>
+                            <Button
+                                variant="contained" color="secondary"
+                                onClick={() => this.onSubmitConfirm(this.state.submit, {droppableId: "droppableP1"})}>ผู้เล่น
+                                1
+                                ลง
+                            </Button>
+                        </ExpansionPanelDetails>
+
                     </ExpansionPanel>
 
                     <h2>ใส่เบี้ยที่จะเปลี่ยนที่นี่</h2>
@@ -337,7 +343,7 @@ class App extends Component {
                                         draggableId={item.id}
                                         index={index}>
                                         {(provided, snapshot) => (
-                                            <div
+                                            <Card
                                                 ref={provided.innerRef}
                                                 {...provided.draggableProps}
                                                 {...provided.dragHandleProps}
@@ -345,8 +351,10 @@ class App extends Component {
                                                     snapshot.isDragging,
                                                     provided.draggableProps.style
                                                 )}>
-                                                {item.content}
-                                            </div>
+                                                <CardContent>
+                                                    {item.content}
+                                                </CardContent>
+                                            </Card>
                                         )}
                                     </Draggable>
                                 ))}
@@ -366,7 +374,7 @@ class App extends Component {
                                         draggableId={item.id}
                                         index={index}>
                                         {(provided, snapshot) => (
-                                            <div
+                                            <Card
                                                 ref={provided.innerRef}
                                                 {...provided.draggableProps}
                                                 {...provided.dragHandleProps}
@@ -374,8 +382,10 @@ class App extends Component {
                                                     snapshot.isDragging,
                                                     provided.draggableProps.style
                                                 )}>
-                                                {item.content}
-                                            </div>
+                                                <CardContent>
+                                                    {item.content}
+                                                </CardContent>
+                                            </Card>
                                         )}
                                     </Draggable>
                                 ))}
@@ -401,7 +411,7 @@ class App extends Component {
                                                 draggableId={item.id}
                                                 index={index}>
                                                 {(provided, snapshot) => (
-                                                    <div
+                                                    <Card
                                                         ref={provided.innerRef}
                                                         {...provided.draggableProps}
                                                         {...provided.dragHandleProps}
@@ -409,8 +419,10 @@ class App extends Component {
                                                             snapshot.isDragging,
                                                             provided.draggableProps.style
                                                         )}>
-                                                        {item.content}
-                                                    </div>
+                                                        <CardContent>
+                                                            {item.content}
+                                                        </CardContent>
+                                                    </Card>
                                                 )}
                                             </Draggable>
                                         ))}
