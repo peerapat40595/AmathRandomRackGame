@@ -280,8 +280,9 @@ class App extends Component {
         return (
             <div className="App" id="App">
                 <DragDropContext onDragEnd={this.onDragEnd}>
-                    <h2>P1 Rack</h2>
+                    <h2>เบี้ยในถุง</h2>
                     {this.state.bag.map((item, index) => (<span id={index}>{item.content}</span>))}
+                    <h2>ผู้เล่น 1</h2>
                     <Droppable droppableId="droppableP1" direction="horizontal">
                         {(provided, snapshot) => (
                             <div
@@ -310,19 +311,13 @@ class App extends Component {
                             </div>
                         )}
                     </Droppable>
-                    <h2>droppableChange</h2>
                     <button
-                        onClick={() => this.onSubmitChange(this.state.change, {droppableId: "droppableP1"})}>เปลี่ยน 1
+                        onClick={() => this.onSubmitChange(this.state.change, {droppableId: "droppableP1"})}>ผู้เล่น 1 เปลี่ยน
                     </button>
                     <button
-                        onClick={() => this.onSubmitConfirm(this.state.submit, {droppableId: "droppableP1"})}>ลง 1
+                        onClick={() => this.onSubmitConfirm(this.state.submit, {droppableId: "droppableP1"})}>ผู้เล่น 1 ลง
                     </button>
-                    <button
-                        onClick={() => this.onSubmitChange(this.state.change, {droppableId: "droppableP2"})}>เปลี่ยน 2
-                    </button>
-                    <button
-                        onClick={() => this.onSubmitConfirm(this.state.submit, {droppableId: "droppableP2"})}>ลง 2
-                    </button>
+                    <h2>ใส่เบี้ยที่จะเปลี่ยนที่นี่</h2>
                     <Droppable droppableId="droppableChange" direction="horizontal">
                         {(provided, snapshot) => (
                             <div
@@ -351,7 +346,7 @@ class App extends Component {
                             </div>
                         )}
                     </Droppable>
-                    <h2>droppableSubmit</h2>
+                    <h2>ใส่เบี้ยที่จะลงที่นี่</h2>
                     <Droppable droppableId="droppableSubmit" direction="horizontal">
                         {(provided, snapshot) => (
                             <div
@@ -409,6 +404,12 @@ class App extends Component {
                             </div>
                         )}
                     </Droppable>
+                    <button
+                        onClick={() => this.onSubmitChange(this.state.change, {droppableId: "droppableP2"})}>ผู้เล่น 2 เปลี่ยน
+                    </button>
+                    <button
+                        onClick={() => this.onSubmitConfirm(this.state.submit, {droppableId: "droppableP2"})}>ผู้เล่น 2 ลง
+                    </button>
                 </DragDropContext>
             </div>
         );
