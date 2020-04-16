@@ -156,7 +156,7 @@ const grid = 8;
 const getItemStyle = (isDragging, draggableStyle) => ({
     // some basic styles to make the p1 look a bit nicer
     userSelect: "none",
-    padding: grid,
+    padding: grid / 2,
     margin: `0 ${grid}px 0 0`,
 
     // change background colour if dragging
@@ -371,10 +371,7 @@ class App extends Component {
                             <div
                                 ref={provided.innerRef}
                                 style={
-                                    {
-                                        ...getListStyle(snapshot.isDraggingOver),
-                                        minHeight: 96,
-                                    }
+                                    getListStyle(snapshot.isDraggingOver)
                                 }>
                                 {this.state.change.map((item, index) => (
                                     <Draggable
@@ -407,10 +404,9 @@ class App extends Component {
                         {(provided, snapshot) => (
                             <div
                                 ref={provided.innerRef}
-                                style={{
-                                    ...getListStyle(snapshot.isDraggingOver),
-                                    minHeight: 96,
-                                }}>
+                                style={
+                                    getListStyle(snapshot.isDraggingOver)
+                                }>
                                 {this.state.submit.map((item, index) => (
                                     <Draggable
                                         key={item.id}
