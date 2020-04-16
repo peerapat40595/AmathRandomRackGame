@@ -172,14 +172,15 @@ const getListStyle = isDraggingOver => ({
     background: isDraggingOver ? "lightblue" : "lightgrey",
     display: "flex",
     padding: grid,
-    overflow: "auto",
+    flexWrap: "wrap",
     minHeight: 64,
 });
 
 const getButtonStyle = () => ({
     padding: grid * 2,
-    margin: `0 ${grid}px 0 ${grid}px`,
-    minWidth: 128
+    margin: grid,
+    minWidth: 128,
+    display: "flex"
 })
 
 class App extends Component {
@@ -334,28 +335,31 @@ class App extends Component {
                                     </div>
                                 )}
                             </Droppable>
-                            <Button
-                                style={getButtonStyle()}
-                                disabled={this.state.change.length === 0 || this.state.submit.length > 0 || this.state.p1.length === 8 || this.state.bag.length === 0}
-                                variant="contained" color="primary"
-                                onClick={() => {
-                                    this.onSubmitChange(this.state.change, {droppableId: "droppableP1"})
-                                    this.setState({p1Turn: false, p2Turn: true})
-                                }}>
+                            <div>
 
-                                <Typography variant="h3" component="h4">
-                                    เปลี่ยน </Typography>
-                            </Button>
-                            <Button
-                                style={getButtonStyle()}
-                                disabled={this.state.submit.length === 0 || this.state.change.length > 0 || (this.state.p1.length === 8 && this.state.bag.length !== 0)}
-                                variant="contained" color="secondary"
-                                onClick={() => {
-                                    this.onSubmitConfirm(this.state.submit, {droppableId: "droppableP1"})
-                                    this.setState({p1Turn: false, p2Turn: true})
-                                }}>
-                                <Typography variant="h3" component="h4">
-                                    ลง </Typography> </Button>
+                                <Button
+                                    style={getButtonStyle()}
+                                    disabled={this.state.change.length === 0 || this.state.submit.length > 0 || this.state.p1.length === 8 || this.state.bag.length === 0}
+                                    variant="contained" color="primary"
+                                    onClick={() => {
+                                        this.onSubmitChange(this.state.change, {droppableId: "droppableP1"})
+                                        this.setState({p1Turn: false, p2Turn: true})
+                                    }}>
+
+                                    <Typography variant="h5" component="h6">
+                                        เปลี่ยน </Typography>
+                                </Button>
+                                <Button
+                                    style={getButtonStyle()}
+                                    disabled={this.state.submit.length === 0 || this.state.change.length > 0 || (this.state.p1.length === 8 && this.state.bag.length !== 0)}
+                                    variant="contained" color="secondary"
+                                    onClick={() => {
+                                        this.onSubmitConfirm(this.state.submit, {droppableId: "droppableP1"})
+                                        this.setState({p1Turn: false, p2Turn: true})
+                                    }}>
+                                    <Typography variant="h5" component="h6">
+                                        ลง </Typography> </Button>
+                            </div>
                         </ExpansionPanelDetails>
 
                     </ExpansionPanel>
@@ -475,28 +479,31 @@ class App extends Component {
                                     </div>
                                 )}
                             </Droppable>
-                            <Button
-                                style={getButtonStyle()}
-                                disabled={this.state.change.length === 0 || this.state.submit.length > 0 || this.state.p2.length === 8 || this.state.bag.length === 0}
-                                variant="contained" color="primary"
-                                onClick={() => {
-                                    this.onSubmitChange(this.state.change, {droppableId: "droppableP2"})
-                                    this.setState({p1Turn: true, p2Turn: false})
-                                }}>
-                                <Typography variant="h3" component="h4">
-                                    เปลี่ยน </Typography>
-                            </Button>
-                            <Button
-                                style={getButtonStyle()}
-                                disabled={this.state.submit.length === 0 || this.state.change.length > 0 || (this.state.p2.length === 8 && this.state.bag.length !== 0)}
-                                variant="contained" color="secondary"
-                                onClick={() => {
-                                    this.onSubmitConfirm(this.state.submit, {droppableId: "droppableP2"})
-                                    this.setState({p1Turn: true, p2Turn: false})
-                                }}>
-                                <Typography variant="h3" component="h4">
-                                    ลง </Typography>
-                            </Button> </ExpansionPanelDetails>
+                            <div>
+                                <Button
+                                    style={getButtonStyle()}
+                                    disabled={this.state.change.length === 0 || this.state.submit.length > 0 || this.state.p2.length === 8 || this.state.bag.length === 0}
+                                    variant="contained" color="primary"
+                                    onClick={() => {
+                                        this.onSubmitChange(this.state.change, {droppableId: "droppableP2"})
+                                        this.setState({p1Turn: true, p2Turn: false})
+                                    }}>
+                                    <Typography variant="h5" component="h6">
+                                        เปลี่ยน </Typography>
+                                </Button>
+                                <Button
+                                    style={getButtonStyle()}
+                                    disabled={this.state.submit.length === 0 || this.state.change.length > 0 || (this.state.p2.length === 8 && this.state.bag.length !== 0)}
+                                    variant="contained" color="secondary"
+                                    onClick={() => {
+                                        this.onSubmitConfirm(this.state.submit, {droppableId: "droppableP2"})
+                                        this.setState({p1Turn: true, p2Turn: false})
+                                    }}>
+                                    <Typography variant="h5" component="h6">
+                                        ลง </Typography>
+                                </Button></div>
+                        </ExpansionPanelDetails>
+
                     </ExpansionPanel>
 
                 </DragDropContext>
