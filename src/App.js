@@ -316,12 +316,14 @@ class App extends Component {
                                 )}
                             </Droppable>
                             <Button
+                                disabled={this.state.change.length === 0 || this.state.submit.length > 0 }
                                 variant="contained" color="primary"
                                 onClick={() => this.onSubmitChange(this.state.change, {droppableId: "droppableP1"})}>ผู้เล่น
                                 1
                                 เปลี่ยน
                             </Button>
                             <Button
+                                disabled={this.state.submit.length === 0 || this.state.change.length > 0}
                                 variant="contained" color="secondary"
                                 onClick={() => this.onSubmitConfirm(this.state.submit, {droppableId: "droppableP1"})}>ผู้เล่น
                                 1
@@ -439,12 +441,14 @@ class App extends Component {
                                 )}
                             </Droppable>
                             <Button
+                                disabled={this.state.change.length === 0 || this.state.submit.length > 0 }
                                 variant="contained" color="primary"
                                 onClick={() => this.onSubmitChange(this.state.change, {droppableId: "droppableP2"})}>ผู้เล่น
                                 2
                                 เปลี่ยน
                             </Button>
                             <Button
+                                disabled={this.state.submit.length === 0 || this.state.change.length > 0}
                                 variant="contained" color="secondary"
                                 onClick={() => this.onSubmitConfirm(this.state.submit, {droppableId: "droppableP2"})}>ผู้เล่น
                                 2
