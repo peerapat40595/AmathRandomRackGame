@@ -7,7 +7,6 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
 let initialItems = [
@@ -156,8 +155,8 @@ const grid = 8;
 const getItemStyle = (isDragging, draggableStyle) => ({
     // some basic styles to make the p1 look a bit nicer
     userSelect: "none",
-    padding: grid / 2,
-    margin: `${grid}px ${grid}px 0 0`,
+    padding: grid / 4,
+    margin: `${grid / 2}px ${grid / 2}px 0 0`,
 
     // change background colour if dragging
     background: isDragging ? "lightgreen" : "#424242",
@@ -166,6 +165,10 @@ const getItemStyle = (isDragging, draggableStyle) => ({
     flexGrow: 1,
     flexBasis: 0,
     maxWidth: 96,
+    minHeight: 64,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     // styles we need to apply on draggables
     ...draggableStyle
 });
@@ -325,11 +328,9 @@ class App extends Component {
                                                             snapshot.isDragging,
                                                             provided.draggableProps.style
                                                         )}>
-                                                        <CardContent>
-                                                            <Typography variant="h3" component="h4">
-                                                                {item.content}
-                                                            </Typography>
-                                                        </CardContent>
+                                                        <Typography variant="h3" component="h4">
+                                                            {item.content}
+                                                        </Typography>
                                                     </Card>
                                                 )}
                                             </Draggable>
@@ -389,10 +390,9 @@ class App extends Component {
                                                     snapshot.isDragging,
                                                     provided.draggableProps.style
                                                 )}>
-                                                <CardContent>
-                                                    <Typography variant="h3" component="h4">
-                                                        {item.content}
-                                                    </Typography> </CardContent>
+                                                <Typography variant="h3" component="h4">
+                                                    {item.content}
+                                                </Typography>
                                             </Card>
                                         )}
                                     </Draggable>
@@ -423,10 +423,9 @@ class App extends Component {
                                                     snapshot.isDragging,
                                                     provided.draggableProps.style
                                                 )}>
-                                                <CardContent>
-                                                    <Typography variant="h3" component="h4">
-                                                        {item.content}
-                                                    </Typography> </CardContent>
+                                                <Typography variant="h3" component="h4">
+                                                    {item.content}
+                                                </Typography>
                                             </Card>
                                         )}
                                     </Draggable>
@@ -463,10 +462,9 @@ class App extends Component {
                                                             snapshot.isDragging,
                                                             provided.draggableProps.style
                                                         )}>
-                                                        <CardContent>
-                                                            <Typography variant="h3" component="h4">
-                                                                {item.content}
-                                                            </Typography> </CardContent>
+                                                        <Typography variant="h3" component="h4">
+                                                            {item.content}
+                                                        </Typography>
                                                     </Card>
                                                 )}
                                             </Draggable>
