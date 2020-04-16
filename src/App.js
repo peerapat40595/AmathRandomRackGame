@@ -211,7 +211,6 @@ class App extends Component {
     getList = id => this.state[this.id2List[id]];
 
     onSubmitChange = (items, destination) => {
-        console.log(Object.keys({"state": ""}).pop(), getItems(5))
         const numberOfChange = items.length
 
         const bagItemsClone = Array.from(this.state.bag);
@@ -240,7 +239,7 @@ class App extends Component {
             [this.id2List[source.droppableId]]: [...sourceState, ...newItemFromBag],
             bag: [...bagItemsClone],
             trash: [...this.state.trash, items],
-            change: []
+            submit: []
         });
     }
 
@@ -313,10 +312,16 @@ class App extends Component {
                     </Droppable>
                     <h2>droppableChange</h2>
                     <button
-                        onClick={() => this.onSubmitChange(this.state.change, {droppableId: "droppableP1"})}>Change
+                        onClick={() => this.onSubmitChange(this.state.change, {droppableId: "droppableP1"})}>เปลี่ยน 1
                     </button>
                     <button
-                        onClick={() => this.onSubmitConfirm(this.state.change, {droppableId: "droppableP1"})}>Confirm
+                        onClick={() => this.onSubmitConfirm(this.state.submit, {droppableId: "droppableP1"})}>ลง 1
+                    </button>
+                    <button
+                        onClick={() => this.onSubmitChange(this.state.change, {droppableId: "droppableP2"})}>เปลี่ยน 2
+                    </button>
+                    <button
+                        onClick={() => this.onSubmitConfirm(this.state.submit, {droppableId: "droppableP2"})}>ลง 2
                     </button>
                     <Droppable droppableId="droppableChange" direction="horizontal">
                         {(provided, snapshot) => (
