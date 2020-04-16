@@ -157,13 +157,15 @@ const getItemStyle = (isDragging, draggableStyle) => ({
     // some basic styles to make the p1 look a bit nicer
     userSelect: "none",
     padding: grid / 2,
-    margin: `0 ${grid}px 0 0`,
+    margin: `${grid}px ${grid}px 0 0`,
 
     // change background colour if dragging
     background: isDragging ? "lightgreen" : "#424242",
     color: "white",
     minWidth: 64,
-
+    flexGrow: 1,
+    flexBasis: 0,
+    maxWidth: 96,
     // styles we need to apply on draggables
     ...draggableStyle
 });
@@ -324,7 +326,7 @@ class App extends Component {
                                                             provided.draggableProps.style
                                                         )}>
                                                         <CardContent>
-                                                            <Typography variant="h5" component="h6">
+                                                            <Typography variant="h3" component="h4">
                                                                 {item.content}
                                                             </Typography>
                                                         </CardContent>
@@ -388,7 +390,7 @@ class App extends Component {
                                                     provided.draggableProps.style
                                                 )}>
                                                 <CardContent>
-                                                    <Typography variant="h5" component="h6">
+                                                    <Typography variant="h3" component="h4">
                                                         {item.content}
                                                     </Typography> </CardContent>
                                             </Card>
@@ -422,7 +424,7 @@ class App extends Component {
                                                     provided.draggableProps.style
                                                 )}>
                                                 <CardContent>
-                                                    <Typography variant="h5" component="h6">
+                                                    <Typography variant="h3" component="h4">
                                                         {item.content}
                                                     </Typography> </CardContent>
                                             </Card>
@@ -462,7 +464,7 @@ class App extends Component {
                                                             provided.draggableProps.style
                                                         )}>
                                                         <CardContent>
-                                                            <Typography variant="h5" component="h6">
+                                                            <Typography variant="h3" component="h4">
                                                                 {item.content}
                                                             </Typography> </CardContent>
                                                     </Card>
