@@ -281,7 +281,6 @@ class App extends Component {
             <div className="App" id="App">
                 <DragDropContext onDragEnd={this.onDragEnd}>
                     <h2>เบี้ยในถุง</h2>
-                    {this.state.bag.map((item, index) => (<span id={index}>{item.content}</span>))}
                     <h2>ผู้เล่น 1</h2>
                     <Droppable droppableId="droppableP1" direction="horizontal">
                         {(provided, snapshot) => (
@@ -415,6 +414,9 @@ class App extends Component {
                         ลง
                     </button>
                 </DragDropContext>
+                <div id="bag">
+                    {this.state.bag.map((item, index) => (<span id={index}>{item.content}</span>))}
+                </div>
             </div>
         );
     }
