@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {DragDropContext, Draggable, Droppable} from 'react-beautiful-dnd';
 import './App.css';
+import './font.css'
 import Button from '@material-ui/core/Button';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
@@ -297,7 +298,7 @@ class App extends Component {
     // But in this example everything is just done in one place for simplicity
     render() {
         return (
-            <div className="App" id="App">
+            <div className="App" id="App" style={{fontFamily: "Sriracha"}}>
                 <DragDropContext onDragEnd={this.onDragEnd}>
                     <ExpansionPanel expanded={this.state.p1Turn}
                                     onChange={() => this.setState({p1Turn: !this.state.p1Turn})}>
@@ -328,7 +329,8 @@ class App extends Component {
                                                             snapshot.isDragging,
                                                             provided.draggableProps.style
                                                         )}>
-                                                        <Typography variant="h3" component="h4">
+                                                        <Typography variant="h3" component="h4"
+                                                                    style={{fontFamily: "Sriracha"}}>
                                                             {item.content}
                                                         </Typography>
                                                     </Card>
@@ -350,7 +352,7 @@ class App extends Component {
                                         this.setState({p1Turn: false, p2Turn: true})
                                     }}>
 
-                                    <Typography variant="h5" component="h6">
+                                    <Typography variant="h5" component="h6" style={{fontFamily: "Sriracha"}}>
                                         เปลี่ยน </Typography>
                                 </Button>
                                 <Button
@@ -361,7 +363,7 @@ class App extends Component {
                                         this.onSubmitConfirm(this.state.submit, {droppableId: "droppableP1"})
                                         this.setState({p1Turn: false, p2Turn: true})
                                     }}>
-                                    <Typography variant="h5" component="h6">
+                                    <Typography variant="h5" component="h6" style={{fontFamily: "Sriracha"}}>
                                         ลง </Typography> </Button>
                             </div>
                         </ExpansionPanelDetails>}
@@ -390,7 +392,8 @@ class App extends Component {
                                                     snapshot.isDragging,
                                                     provided.draggableProps.style
                                                 )}>
-                                                <Typography variant="h3" component="h4">
+                                                <Typography variant="h3" component="h4"
+                                                            style={{fontFamily: "Sriracha"}}>
                                                     {item.content}
                                                 </Typography>
                                             </Card>
@@ -423,7 +426,8 @@ class App extends Component {
                                                     snapshot.isDragging,
                                                     provided.draggableProps.style
                                                 )}>
-                                                <Typography variant="h3" component="h4">
+                                                <Typography variant="h3" component="h4"
+                                                            style={{fontFamily: "Sriracha"}}>
                                                     {item.content}
                                                 </Typography>
                                             </Card>
@@ -462,7 +466,8 @@ class App extends Component {
                                                             snapshot.isDragging,
                                                             provided.draggableProps.style
                                                         )}>
-                                                        <Typography variant="h3" component="h4">
+                                                        <Typography variant="h3" component="h4"
+                                                                    style={{fontFamily: "Sriracha"}}>
                                                             {item.content}
                                                         </Typography>
                                                     </Card>
@@ -482,7 +487,7 @@ class App extends Component {
                                         this.onSubmitChange(this.state.change, {droppableId: "droppableP2"})
                                         this.setState({p1Turn: true, p2Turn: false})
                                     }}>
-                                    <Typography variant="h5" component="h6">
+                                    <Typography variant="h5" component="h6" style={{fontFamily: "Sriracha"}}>
                                         เปลี่ยน </Typography>
                                 </Button>
                                 <Button
@@ -493,7 +498,7 @@ class App extends Component {
                                         this.onSubmitConfirm(this.state.submit, {droppableId: "droppableP2"})
                                         this.setState({p1Turn: true, p2Turn: false})
                                     }}>
-                                    <Typography variant="h5" component="h6">
+                                    <Typography variant="h5" component="h6" style={{fontFamily: "Sriracha"}}>
                                         ลง </Typography>
                                 </Button></div>
                         </ExpansionPanelDetails>}
