@@ -298,7 +298,7 @@ class App extends Component {
     // But in this example everything is just done in one place for simplicity
     render() {
         return (
-            <div className="App" id="App" style={{fontFamily: "Sriracha"}}>
+            <div className="App" id="App" style={{fontFamily: "Sriracha", color: "#333"}}>
                 <DragDropContext onDragEnd={this.onDragEnd}>
                     <ExpansionPanel expanded={this.state.p1Turn}
                                     onChange={() => this.setState({p1Turn: !this.state.p1Turn})}>
@@ -376,8 +376,9 @@ class App extends Component {
                             <div
                                 ref={provided.innerRef}
                                 style={
-                                    getListStyle(snapshot.isDraggingOver)
-                                }>
+                                    {...getListStyle(snapshot.isDraggingOver),
+                                        margin: 32,
+                                    }                                }>
                                 {this.state.change.map((item, index) => (
                                     <Draggable
                                         key={item.id}
@@ -405,12 +406,14 @@ class App extends Component {
                         )}
                     </Droppable>
                     <h2>ใส่เบี้ยที่จะลงที่นี่</h2>
-                    <Droppable droppableId="droppableSubmit" direction="horizontal">
+                    <Droppable droppableId="droppableSubmit" direction="horizontal" >
                         {(provided, snapshot) => (
                             <div
                                 ref={provided.innerRef}
                                 style={
-                                    getListStyle(snapshot.isDraggingOver)
+                                    {...getListStyle(snapshot.isDraggingOver),
+                                        margin: 32,
+                                    }
                                 }>
                                 {this.state.submit.map((item, index) => (
                                     <Draggable
