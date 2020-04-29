@@ -224,8 +224,8 @@ class App extends Component {
       p2: getItems(8),
       submit: [],
       bag: getItems(84),
-      p1Turn: false,
-      p2Turn: false
+      p1Turn: true,
+      p2Turn: true
     });
   }
 
@@ -371,7 +371,7 @@ class App extends Component {
                       this.onSubmitChange(this.state.change, {
                         droppableId: "droppableP1"
                       });
-                      this.setState({ p1Turn: false, p2Turn: true });
+                      // this.setState({ p1Turn: false, p2Turn: true });
                     }}
                   >
                     <Typography
@@ -396,7 +396,7 @@ class App extends Component {
                       this.onSubmitConfirm(this.state.submit, {
                         droppableId: "droppableP1"
                       });
-                      this.setState({ p1Turn: false, p2Turn: true });
+                      // this.setState({ p1Turn: false, p2Turn: true });
                     }}
                   >
                     <Typography
