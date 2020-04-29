@@ -239,11 +239,7 @@ class App extends Component {
 
   updateSnapshot = () => {
     const cloned = JSON.parse(JSON.stringify(this.state));
-    let snapShotClone = JSON.parse(JSON.stringify(this.state.snapshot));
-    if (snapShotClone.length >= 5) {
-      snapShotClone = snapShotClone.slice(0, 4);
-    }
-    this.setState({ snapshot: [cloned, ...snapShotClone] });
+    this.setState({ snapshot: [cloned] });
   };
 
   retrieveSnapshot = () => {
