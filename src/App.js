@@ -125,7 +125,7 @@ function shuffle(array) {
 const getItems = (count = 0) => {
   shuffle(initialItems);
   const removed = initialItems.splice(0, count);
-  console.log(Object.keys({ removed }).pop(), removed);
+  // console.log(Object.keys({ removed }).pop(), removed);
   return Array.from(removed);
 };
 
