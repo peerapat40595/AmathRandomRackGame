@@ -511,6 +511,13 @@ class App extends Component {
               </ExpansionPanelDetails>
             )}
           </ExpansionPanel>
+          <Typography
+            variant="h5"
+            component="h6"
+            style={{ fontFamily: "Sriracha" }}
+          >
+            เบี้ยในถุงเหลือ{`: ${this.state.bag.length} ตัว`}
+          </Typography>
           <Button
             style={getButtonStyle()}
             disabled={this.state.snapshot.length === 0}
@@ -714,7 +721,7 @@ class App extends Component {
               <h2>เบี้ยในถุง</h2>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
-              {this.state.bag.map((item) => (
+              {this.state.bag.map(item => (
                 <span key={item.id}>{item.content}</span>
               ))}
             </ExpansionPanelDetails>
