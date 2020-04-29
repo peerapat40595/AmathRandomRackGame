@@ -429,6 +429,7 @@ class App extends Component {
                     style={{ ...getButtonStyle(), marginLeft: 16 }}
                     variant="contained"
                     color="primary"
+                    disabled={this.state.p1Bucket.length === 0}
                     onClick={() => {
                       navigator.clipboard.writeText(
                         this.state.p1Bucket
@@ -606,6 +607,7 @@ class App extends Component {
                     style={{ ...getButtonStyle(), marginLeft: 16 }}
                     variant="contained"
                     color="primary"
+                    disabled={this.state.p2Bucket.length === 0}
                     onClick={() => {
                       navigator.clipboard.writeText(
                         this.state.p2Bucket
