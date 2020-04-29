@@ -205,7 +205,8 @@ class App extends Component {
     bag: [],
     trash: [],
     p1Turn: false,
-    p2Turn: false
+    p2Turn: false,
+    snapshot: []
   };
 
   /**
@@ -231,13 +232,28 @@ class App extends Component {
       submit: [],
       bag: getItems(84),
       p1Turn: true,
-      p2Turn: true
+      p2Turn: true,
+      snapshot: []
     });
   }
+
+  updateSnapshot = () => {
+    const cloned = JSON.parse(JSON.stringify(this.state));
+    const snapShotClone = JSON.parse(JSON.stringify(this.state.snapshot));
+    this.setState({ snapshot: [cloned, ...snapShotClone] });
+  };
+
+  retrieveSnapshot = () => {
+    if (this.state.snapshot.length === 0) {
+      return;
+    }
+    this.setState({...this.state.snapshot.shift()});
+  };
 
   getList = id => this.state[this.id2List[id]];
 
   onSubmitChange = (items, destination, origin) => {
+    this.updateSnapshot();
     const numberOfChange = items.length;
 
     const bagItemsClone = Array.from(this.state.bag);
@@ -258,6 +274,7 @@ class App extends Component {
   };
 
   onSubmitConfirm = (items, source, origin) => {
+    this.updateSnapshot();
     const numberOfChange = items.length;
 
     const bagItemsClone = Array.from(this.state.bag);
@@ -494,6 +511,24 @@ class App extends Component {
               </ExpansionPanelDetails>
             )}
           </ExpansionPanel>
+          <Button
+            style={getButtonStyle()}
+            disabled={this.state.snapshot.length === 0}
+            variant="contained"
+            color="primary"
+            onClick={() => {
+              this.retrieveSnapshot();
+            }}
+          >
+            <Typography
+              variant="h5"
+              component="h6"
+              style={{ fontFamily: "Sriracha" }}
+            >
+              Back{" "}
+            </Typography>
+          </Button>
+
           <ExpansionPanel
             expanded={this.state.p2Turn}
             onChange={() => this.setState({ p2Turn: !this.state.p2Turn })}
