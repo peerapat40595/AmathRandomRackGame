@@ -425,6 +425,30 @@ class App extends Component {
                       ลง{" "}
                     </Typography>{" "}
                   </Button>
+                  <Button
+                    style={{ ...getButtonStyle(), marginLeft: 16 }}
+                    variant="contained"
+                    color="primary"
+                    onClick={() => {
+                      navigator.clipboard.writeText(
+                        this.state.p1Bucket
+                          .map(item =>
+                            isNumberContent(item.content)
+                              ? item.content
+                              : `"(${item.content})"`
+                          )
+                          .join("\t")
+                      );
+                    }}
+                  >
+                    <Typography
+                      variant="h5"
+                      component="h6"
+                      style={{ fontFamily: "Sriracha" }}
+                    >
+                      Copy{" "}
+                    </Typography>
+                  </Button>
                 </div>
                 <Droppable
                   droppableId="droppableP1Bucket"
@@ -469,132 +493,6 @@ class App extends Component {
               </ExpansionPanelDetails>
             )}
           </ExpansionPanel>
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <h2>ใส่เบี้ยที่จะเปลี่ยนที่นี่</h2>
-            <Button
-              style={{ ...getButtonStyle(), marginLeft: 16 }}
-              variant="contained"
-              color="primary"
-              onClick={() => {
-                navigator.clipboard.writeText(
-                  this.state.change
-                    .map(item =>
-                      isNumberContent(item.content)
-                        ? item.content
-                        : `"(${item.content})"`
-                    )
-                    .join("\t")
-                );
-              }}
-            >
-              <Typography
-                variant="h5"
-                component="h6"
-                style={{ fontFamily: "Sriracha" }}
-              >
-                Copy{" "}
-              </Typography>
-            </Button>
-          </div>
-          <Droppable droppableId="droppableChange" direction="horizontal">
-            {(provided, snapshot) => (
-              <div
-                ref={provided.innerRef}
-                style={{
-                  ...getListStyle(snapshot.isDraggingOver),
-                  margin: 32
-                }}
-              >
-                {this.state.change.map((item, index) => (
-                  <Draggable key={item.id} draggableId={item.id} index={index}>
-                    {(provided, snapshot) => (
-                      <Card
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                        style={getItemStyle(
-                          snapshot.isDragging,
-                          provided.draggableProps.style
-                        )}
-                      >
-                        <Typography
-                          variant="h3"
-                          component="h4"
-                          style={{ fontFamily: "Sriracha" }}
-                        >
-                          {item.content}
-                        </Typography>
-                      </Card>
-                    )}
-                  </Draggable>
-                ))}
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <h2>ใส่เบี้ยที่จะลงที่นี</h2>
-            <Button
-              style={{ ...getButtonStyle(), marginLeft: 16 }}
-              variant="contained"
-              color="primary"
-              onClick={() => {
-                navigator.clipboard.writeText(
-                  this.state.submit
-                    .map(item =>
-                      isNumberContent(item.content)
-                        ? item.content
-                        : `"(${item.content})"`
-                    )
-                    .join("\t")
-                );
-              }}
-            >
-              <Typography
-                variant="h5"
-                component="h6"
-                style={{ fontFamily: "Sriracha" }}
-              >
-                Copy{" "}
-              </Typography>
-            </Button>
-          </div>
-          <Droppable droppableId="droppableSubmit" direction="horizontal">
-            {(provided, snapshot) => (
-              <div
-                ref={provided.innerRef}
-                style={{
-                  ...getListStyle(snapshot.isDraggingOver),
-                  margin: 32
-                }}
-              >
-                {this.state.submit.map((item, index) => (
-                  <Draggable key={item.id} draggableId={item.id} index={index}>
-                    {(provided, snapshot) => (
-                      <Card
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                        style={getItemStyle(
-                          snapshot.isDragging,
-                          provided.draggableProps.style
-                        )}
-                      >
-                        <Typography
-                          variant="h3"
-                          component="h4"
-                          style={{ fontFamily: "Sriracha" }}
-                        >
-                          {item.content}
-                        </Typography>
-                      </Card>
-                    )}
-                  </Draggable>
-                ))}
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
           <ExpansionPanel
             expanded={this.state.p2Turn}
             onChange={() => this.setState({ p2Turn: !this.state.p2Turn })}
@@ -702,6 +600,30 @@ class App extends Component {
                       style={{ fontFamily: "Sriracha" }}
                     >
                       ลง{" "}
+                    </Typography>
+                  </Button>
+                  <Button
+                    style={{ ...getButtonStyle(), marginLeft: 16 }}
+                    variant="contained"
+                    color="primary"
+                    onClick={() => {
+                      navigator.clipboard.writeText(
+                        this.state.p2Bucket
+                          .map(item =>
+                            isNumberContent(item.content)
+                              ? item.content
+                              : `"(${item.content})"`
+                          )
+                          .join("\t")
+                      );
+                    }}
+                  >
+                    <Typography
+                      variant="h5"
+                      component="h6"
+                      style={{ fontFamily: "Sriracha" }}
+                    >
+                      Copy{" "}
                     </Typography>
                   </Button>
                 </div>
