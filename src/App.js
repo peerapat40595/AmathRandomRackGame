@@ -247,7 +247,7 @@ class App extends Component {
     if (this.state.snapshot.length === 0) {
       return;
     }
-    this.setState({...this.state.snapshot.shift()});
+    this.setState({ ...this.state.snapshot.shift() });
   };
 
   getList = id => this.state[this.id2List[id]];
@@ -714,8 +714,8 @@ class App extends Component {
               <h2>เบี้ยในถุง</h2>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
-              {this.state.bag.map((item, index) => (
-                <span id={index}>{item.content}</span>
+              {this.state.bag.map((item) => (
+                <span key={item.id}>{item.content}</span>
               ))}
             </ExpansionPanelDetails>
           </ExpansionPanel>
