@@ -198,6 +198,8 @@ class App extends Component {
   state = {
     p1: [],
     p2: [],
+    p1Bucket: [],
+    p2Bucket: [],
     change: [],
     submit: [],
     bag: [],
@@ -214,6 +216,8 @@ class App extends Component {
   id2List = {
     droppableP1: "p1",
     droppableP2: "p2",
+    droppableP1Bucket: "p1Bucket",
+    droppableP2Bucket: "p2Bucket",
     droppableChange: "change",
     droppableSubmit: "submit"
   };
@@ -222,6 +226,8 @@ class App extends Component {
     this.setState({
       p1: getItems(8),
       p2: getItems(8),
+      p1Bucket: [],
+      p2Bucket: [],
       submit: [],
       bag: getItems(84),
       p1Turn: true,
@@ -231,7 +237,7 @@ class App extends Component {
 
   getList = id => this.state[this.id2List[id]];
 
-  onSubmitChange = (items, destination) => {
+  onSubmitChange = (items, destination, origin) => {
     const numberOfChange = items.length;
 
     const bagItemsClone = Array.from(this.state.bag);
@@ -246,11 +252,12 @@ class App extends Component {
         ...newItemFromBag
       ],
       bag: [...bagItemsClone, ...items],
-      change: []
+      change: [],
+      [this.id2List[origin.droppableId]]: []
     });
   };
 
-  onSubmitConfirm = (items, source) => {
+  onSubmitConfirm = (items, source, origin) => {
     const numberOfChange = items.length;
 
     const bagItemsClone = Array.from(this.state.bag);
@@ -263,7 +270,8 @@ class App extends Component {
       [this.id2List[source.droppableId]]: [...sourceState, ...newItemFromBag],
       bag: [...bagItemsClone],
       trash: [...this.state.trash, items],
-      submit: []
+      submit: [],
+      [this.id2List[origin.droppableId]]: []
     });
   };
 
@@ -360,17 +368,22 @@ class App extends Component {
                   <Button
                     style={getButtonStyle()}
                     disabled={
-                      this.state.change.length === 0 ||
-                      this.state.submit.length > 0 ||
+                      this.state.p1Bucket.length === 0 ||
                       this.state.p1.length === 8 ||
                       this.state.bag.length === 0
                     }
                     variant="contained"
                     color="primary"
                     onClick={() => {
-                      this.onSubmitChange(this.state.change, {
-                        droppableId: "droppableP1"
-                      });
+                      this.onSubmitChange(
+                        this.state.p1Bucket,
+                        {
+                          droppableId: "droppableP1"
+                        },
+                        {
+                          droppableId: "droppableP1Bucket"
+                        }
+                      );
                       // this.setState({ p1Turn: false, p2Turn: true });
                     }}
                   >
@@ -385,17 +398,22 @@ class App extends Component {
                   <Button
                     style={getButtonStyle()}
                     disabled={
-                      this.state.submit.length === 0 ||
-                      this.state.change.length > 0 ||
+                      this.state.p1Bucket.length === 0 ||
                       (this.state.p1.length === 8 &&
                         this.state.bag.length !== 0)
                     }
                     variant="contained"
                     color="secondary"
                     onClick={() => {
-                      this.onSubmitConfirm(this.state.submit, {
-                        droppableId: "droppableP1"
-                      });
+                      this.onSubmitConfirm(
+                        this.state.p1Bucket,
+                        {
+                          droppableId: "droppableP1"
+                        },
+                        {
+                          droppableId: "droppableP1Bucket"
+                        }
+                      );
                       // this.setState({ p1Turn: false, p2Turn: true });
                     }}
                   >
@@ -408,6 +426,46 @@ class App extends Component {
                     </Typography>{" "}
                   </Button>
                 </div>
+                <Droppable
+                  droppableId="droppableP1Bucket"
+                  direction="horizontal"
+                >
+                  {(provided, snapshot) => (
+                    <div
+                      ref={provided.innerRef}
+                      style={getListStyle(snapshot.isDraggingOver)}
+                    >
+                      {this.state.p1Bucket.map((item, index) => (
+                        <Draggable
+                          key={item.id}
+                          draggableId={item.id}
+                          index={index}
+                        >
+                          {(provided, snapshot) => (
+                            <Card
+                              ref={provided.innerRef}
+                              {...provided.draggableProps}
+                              {...provided.dragHandleProps}
+                              style={getItemStyle(
+                                snapshot.isDragging,
+                                provided.draggableProps.style
+                              )}
+                            >
+                              <Typography
+                                variant="h3"
+                                component="h4"
+                                style={{ fontFamily: "Sriracha" }}
+                              >
+                                {item.content}
+                              </Typography>
+                            </Card>
+                          )}
+                        </Draggable>
+                      ))}
+                      {provided.placeholder}
+                    </div>
+                  )}
+                </Droppable>
               </ExpansionPanelDetails>
             )}
           </ExpansionPanel>
@@ -589,18 +647,23 @@ class App extends Component {
                   <Button
                     style={getButtonStyle()}
                     disabled={
-                      this.state.change.length === 0 ||
-                      this.state.submit.length > 0 ||
+                      this.state.p2Bucket.length === 0 ||
                       this.state.p2.length === 8 ||
                       this.state.bag.length === 0
                     }
                     variant="contained"
                     color="primary"
                     onClick={() => {
-                      this.onSubmitChange(this.state.change, {
-                        droppableId: "droppableP2"
-                      });
-                      this.setState({ p1Turn: true, p2Turn: false });
+                      this.onSubmitChange(
+                        this.state.p2Bucket,
+                        {
+                          droppableId: "droppableP2"
+                        },
+                        {
+                          droppableId: "droppableP2Bucket"
+                        }
+                      );
+                      // this.setState({ p1Turn: true, p2Turn: false });
                     }}
                   >
                     <Typography
@@ -614,18 +677,23 @@ class App extends Component {
                   <Button
                     style={getButtonStyle()}
                     disabled={
-                      this.state.submit.length === 0 ||
-                      this.state.change.length > 0 ||
+                      this.state.p2Bucket.length === 0 ||
                       (this.state.p2.length === 8 &&
                         this.state.bag.length !== 0)
                     }
                     variant="contained"
                     color="secondary"
                     onClick={() => {
-                      this.onSubmitConfirm(this.state.submit, {
-                        droppableId: "droppableP2"
-                      });
-                      this.setState({ p1Turn: true, p2Turn: false });
+                      this.onSubmitConfirm(
+                        this.state.p2Bucket,
+                        {
+                          droppableId: "droppableP2"
+                        },
+                        {
+                          droppableId: "droppableP2Bucket"
+                        }
+                      );
+                      // this.setState({ p1Turn: true, p2Turn: false });
                     }}
                   >
                     <Typography
@@ -637,6 +705,46 @@ class App extends Component {
                     </Typography>
                   </Button>
                 </div>
+                <Droppable
+                  droppableId="droppableP2Bucket"
+                  direction="horizontal"
+                >
+                  {(provided, snapshot) => (
+                    <div
+                      ref={provided.innerRef}
+                      style={getListStyle(snapshot.isDraggingOver)}
+                    >
+                      {this.state.p2Bucket.map((item, index) => (
+                        <Draggable
+                          key={item.id}
+                          draggableId={item.id}
+                          index={index}
+                        >
+                          {(provided, snapshot) => (
+                            <Card
+                              ref={provided.innerRef}
+                              {...provided.draggableProps}
+                              {...provided.dragHandleProps}
+                              style={getItemStyle(
+                                snapshot.isDragging,
+                                provided.draggableProps.style
+                              )}
+                            >
+                              <Typography
+                                variant="h3"
+                                component="h4"
+                                style={{ fontFamily: "Sriracha" }}
+                              >
+                                {item.content}
+                              </Typography>
+                            </Card>
+                          )}
+                        </Draggable>
+                      ))}
+                      {provided.placeholder}
+                    </div>
+                  )}
+                </Droppable>
               </ExpansionPanelDetails>
             )}
           </ExpansionPanel>
