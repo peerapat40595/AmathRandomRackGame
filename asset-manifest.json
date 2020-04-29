@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/AmathRandomRackGame/static/css/main.1cc8d38d.chunk.css",
-    "main.js": "/AmathRandomRackGame/static/js/main.a426e4b4.chunk.js",
-    "main.js.map": "/AmathRandomRackGame/static/js/main.a426e4b4.chunk.js.map",
+    "main.js": "/AmathRandomRackGame/static/js/main.208d9e21.chunk.js",
+    "main.js.map": "/AmathRandomRackGame/static/js/main.208d9e21.chunk.js.map",
     "runtime-main.js": "/AmathRandomRackGame/static/js/runtime-main.d4ae8806.js",
     "runtime-main.js.map": "/AmathRandomRackGame/static/js/runtime-main.d4ae8806.js.map",
     "static/js/2.1c4c2a2e.chunk.js": "/AmathRandomRackGame/static/js/2.1c4c2a2e.chunk.js",
     "static/js/2.1c4c2a2e.chunk.js.map": "/AmathRandomRackGame/static/js/2.1c4c2a2e.chunk.js.map",
     "index.html": "/AmathRandomRackGame/index.html",
-    "precache-manifest.f51fe5376e7073b00c29555f170f28e3.js": "/AmathRandomRackGame/precache-manifest.f51fe5376e7073b00c29555f170f28e3.js",
+    "precache-manifest.8a8c1560cc42de70e230e42767833898.js": "/AmathRandomRackGame/precache-manifest.8a8c1560cc42de70e230e42767833898.js",
     "service-worker.js": "/AmathRandomRackGame/service-worker.js",
     "static/css/main.1cc8d38d.chunk.css.map": "/AmathRandomRackGame/static/css/main.1cc8d38d.chunk.css.map",
     "static/js/2.1c4c2a2e.chunk.js.LICENSE.txt": "/AmathRandomRackGame/static/js/2.1c4c2a2e.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.d4ae8806.js",
     "static/js/2.1c4c2a2e.chunk.js",
     "static/css/main.1cc8d38d.chunk.css",
-    "static/js/main.a426e4b4.chunk.js"
+    "static/js/main.208d9e21.chunk.js"
   ]
 }

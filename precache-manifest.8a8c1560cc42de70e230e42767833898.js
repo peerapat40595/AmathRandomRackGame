@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7dc16a699a1ff471578d29002f0c6ba0",
+    "revision": "65177e5f35bd141e18683f70692c7f05",
     "url": "/AmathRandomRackGame/index.html"
   },
   {
-    "revision": "53f4cfbe4b69c69cdc4b",
+    "revision": "cb9ff24be9e398d98069",
     "url": "/AmathRandomRackGame/static/css/main.1cc8d38d.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/AmathRandomRackGame/static/js/2.1c4c2a2e.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "53f4cfbe4b69c69cdc4b",
-    "url": "/AmathRandomRackGame/static/js/main.a426e4b4.chunk.js"
+    "revision": "cb9ff24be9e398d98069",
+    "url": "/AmathRandomRackGame/static/js/main.208d9e21.chunk.js"
   },
   {
     "revision": "bfe43733d765672f52b6",
