@@ -10,6 +10,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
+import shuffle from "lodash-es/shuffle";
 
 let initialItems = [
   { content: "0", id: "item-1" },
@@ -111,20 +112,16 @@ let initialItems = [
   { content: "=", id: "item-97" },
   { content: "=", id: "item-98" },
   { content: "=", id: "item-99" },
-  { content: "=", id: "item-100" }
+  { content: "=", id: "item-100" },
 ];
 
 function isNumberContent(content) {
   return /^([0-9]+)$/.test(content);
 }
 
-function shuffle(array) {
-  array.sort(() => Math.random() - 0.5);
-}
-
 // fake data generator
 const getItems = (count = 0) => {
-  shuffle(initialItems);
+  initialItems = shuffle(initialItems);
   const removed = initialItems.splice(0, count);
   // console.log(Object.keys({ removed }).pop(), removed);
   return Array.from(removed);
@@ -176,15 +173,15 @@ const getItemStyle = (isDragging, draggableStyle) => ({
   justifyContent: "center",
   alignItems: "center",
   // styles we need to apply on draggables
-  ...draggableStyle
+  ...draggableStyle,
 });
 
-const getListStyle = isDraggingOver => ({
+const getListStyle = (isDraggingOver) => ({
   background: isDraggingOver ? "lightblue" : "lightgrey",
   display: "flex",
   padding: grid,
   flexWrap: "wrap",
-  minHeight: 64
+  minHeight: 64,
 });
 
 const getButtonStyle = () => ({
@@ -192,7 +189,7 @@ const getButtonStyle = () => ({
   margin: grid,
   marginLeft: 0,
   minWidth: 128,
-  display: "flex"
+  display: "flex",
 });
 
 class App extends Component {
@@ -207,7 +204,7 @@ class App extends Component {
     trash: [],
     p1Turn: false,
     p2Turn: false,
-    snapshot: []
+    snapshot: [],
   };
 
   /**
@@ -221,7 +218,7 @@ class App extends Component {
     droppableP1Bucket: "p1Bucket",
     droppableP2Bucket: "p2Bucket",
     droppableChange: "change",
-    droppableSubmit: "submit"
+    droppableSubmit: "submit",
   };
 
   componentDidMount() {
@@ -234,7 +231,7 @@ class App extends Component {
       bag: getItems(84),
       p1Turn: true,
       p2Turn: true,
-      snapshot: []
+      snapshot: [],
     });
   }
 
@@ -250,14 +247,14 @@ class App extends Component {
     this.setState({ ...this.state.snapshot.shift() });
   };
 
-  getList = id => this.state[this.id2List[id]];
+  getList = (id) => this.state[this.id2List[id]];
 
   onSubmitChange = (items, destination, origin) => {
     this.updateSnapshot();
     const numberOfChange = items.length;
 
-    const bagItemsClone = Array.from(this.state.bag);
-    shuffle(bagItemsClone);
+    let bagItemsClone = Array.from(this.state.bag);
+    bagItemsClone = shuffle(bagItemsClone);
 
     const newItemFromBag = bagItemsClone.splice(0, numberOfChange);
     const destinationState = this.state[this.id2List[destination.droppableId]];
@@ -265,11 +262,11 @@ class App extends Component {
     this.setState({
       [this.id2List[destination.droppableId]]: [
         ...destinationState,
-        ...newItemFromBag
+        ...newItemFromBag,
       ],
       bag: [...bagItemsClone, ...items],
       change: [],
-      [this.id2List[origin.droppableId]]: []
+      [this.id2List[origin.droppableId]]: [],
     });
   };
 
@@ -277,8 +274,8 @@ class App extends Component {
     this.updateSnapshot();
     const numberOfChange = items.length;
 
-    const bagItemsClone = Array.from(this.state.bag);
-    shuffle(bagItemsClone);
+    let bagItemsClone = Array.from(this.state.bag);
+    bagItemsClone = shuffle(bagItemsClone);
 
     const newItemFromBag = bagItemsClone.splice(0, numberOfChange);
     const sourceState = this.state[this.id2List[source.droppableId]];
@@ -288,11 +285,11 @@ class App extends Component {
       bag: [...bagItemsClone],
       trash: [...this.state.trash, items],
       submit: [],
-      [this.id2List[origin.droppableId]]: []
+      [this.id2List[origin.droppableId]]: [],
     });
   };
 
-  onDragEnd = result => {
+  onDragEnd = (result) => {
     const { source, destination } = result;
 
     // dropped outside the list
@@ -318,7 +315,8 @@ class App extends Component {
 
       this.setState({
         [this.id2List[source.droppableId]]: result[source.droppableId],
-        [this.id2List[destination.droppableId]]: result[destination.droppableId]
+        [this.id2List[destination.droppableId]]:
+          result[destination.droppableId],
       });
     }
   };
@@ -342,7 +340,7 @@ class App extends Component {
                 id="p1-name-basic"
                 label="ผู้เล่น 1"
                 variant="outlined"
-                onClick={e => e.stopPropagation()}
+                onClick={(e) => e.stopPropagation()}
               />
             </ExpansionPanelSummary>
             {this.state.p1Turn && (
@@ -400,10 +398,10 @@ class App extends Component {
                       this.onSubmitChange(
                         this.state.p1Bucket,
                         {
-                          droppableId: "droppableP1"
+                          droppableId: "droppableP1",
                         },
                         {
-                          droppableId: "droppableP1Bucket"
+                          droppableId: "droppableP1Bucket",
                         }
                       );
                       // this.setState({ p1Turn: false, p2Turn: true });
@@ -430,10 +428,10 @@ class App extends Component {
                       this.onSubmitConfirm(
                         this.state.p1Bucket,
                         {
-                          droppableId: "droppableP1"
+                          droppableId: "droppableP1",
                         },
                         {
-                          droppableId: "droppableP1Bucket"
+                          droppableId: "droppableP1Bucket",
                         }
                       );
                       // this.setState({ p1Turn: false, p2Turn: true });
@@ -455,7 +453,7 @@ class App extends Component {
                     onClick={() => {
                       navigator.clipboard.writeText(
                         this.state.p1Bucket
-                          .map(item =>
+                          .map((item) =>
                             isNumberContent(item.content)
                               ? item.content
                               : `"(${item.content})"`
@@ -550,7 +548,7 @@ class App extends Component {
                 id="p2-name-basic"
                 label="ผู้เล่น 2"
                 variant="outlined"
-                onClick={e => e.stopPropagation()}
+                onClick={(e) => e.stopPropagation()}
                 color="secondary"
               />
             </ExpansionPanelSummary>
@@ -609,10 +607,10 @@ class App extends Component {
                       this.onSubmitChange(
                         this.state.p2Bucket,
                         {
-                          droppableId: "droppableP2"
+                          droppableId: "droppableP2",
                         },
                         {
-                          droppableId: "droppableP2Bucket"
+                          droppableId: "droppableP2Bucket",
                         }
                       );
                       // this.setState({ p1Turn: true, p2Turn: false });
@@ -639,10 +637,10 @@ class App extends Component {
                       this.onSubmitConfirm(
                         this.state.p2Bucket,
                         {
-                          droppableId: "droppableP2"
+                          droppableId: "droppableP2",
                         },
                         {
-                          droppableId: "droppableP2Bucket"
+                          droppableId: "droppableP2Bucket",
                         }
                       );
                       // this.setState({ p1Turn: true, p2Turn: false });
@@ -664,7 +662,7 @@ class App extends Component {
                     onClick={() => {
                       navigator.clipboard.writeText(
                         this.state.p2Bucket
-                          .map(item =>
+                          .map((item) =>
                             isNumberContent(item.content)
                               ? item.content
                               : `"(${item.content})"`
@@ -732,7 +730,7 @@ class App extends Component {
               <h2>เบี้ยในถุง</h2>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
-              {this.state.bag.map(item => (
+              {this.state.bag.map((item) => (
                 <span key={item.id}>{item.content}</span>
               ))}
             </ExpansionPanelDetails>
