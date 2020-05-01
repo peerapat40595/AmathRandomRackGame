@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/AmathRandomRackGame/static/css/main.1cc8d38d.chunk.css",
-    "main.js": "/AmathRandomRackGame/static/js/main.c04d5633.chunk.js",
-    "main.js.map": "/AmathRandomRackGame/static/js/main.c04d5633.chunk.js.map",
-    "runtime-main.js": "/AmathRandomRackGame/static/js/runtime-main.d4ae8806.js",
-    "runtime-main.js.map": "/AmathRandomRackGame/static/js/runtime-main.d4ae8806.js.map",
-    "static/js/2.5b7a2e0d.chunk.js": "/AmathRandomRackGame/static/js/2.5b7a2e0d.chunk.js",
-    "static/js/2.5b7a2e0d.chunk.js.map": "/AmathRandomRackGame/static/js/2.5b7a2e0d.chunk.js.map",
+    "main.css": "/AmathRandomRackGame/static/css/main.89c25c10.chunk.css",
+    "main.js": "/AmathRandomRackGame/static/js/main.a07d7f3d.chunk.js",
+    "main.js.map": "/AmathRandomRackGame/static/js/main.a07d7f3d.chunk.js.map",
+    "runtime-main.js": "/AmathRandomRackGame/static/js/runtime-main.855cb583.js",
+    "runtime-main.js.map": "/AmathRandomRackGame/static/js/runtime-main.855cb583.js.map",
+    "static/js/2.f5cc437e.chunk.js": "/AmathRandomRackGame/static/js/2.f5cc437e.chunk.js",
+    "static/js/2.f5cc437e.chunk.js.map": "/AmathRandomRackGame/static/js/2.f5cc437e.chunk.js.map",
     "index.html": "/AmathRandomRackGame/index.html",
-    "precache-manifest.fa0a48b1ffb7fcc9babe2b1932a06e68.js": "/AmathRandomRackGame/precache-manifest.fa0a48b1ffb7fcc9babe2b1932a06e68.js",
+    "precache-manifest.24e10b45c9e7251b2aaf383554e35204.js": "/AmathRandomRackGame/precache-manifest.24e10b45c9e7251b2aaf383554e35204.js",
     "service-worker.js": "/AmathRandomRackGame/service-worker.js",
-    "static/css/main.1cc8d38d.chunk.css.map": "/AmathRandomRackGame/static/css/main.1cc8d38d.chunk.css.map",
-    "static/js/2.5b7a2e0d.chunk.js.LICENSE.txt": "/AmathRandomRackGame/static/js/2.5b7a2e0d.chunk.js.LICENSE.txt"
+    "static/css/main.89c25c10.chunk.css.map": "/AmathRandomRackGame/static/css/main.89c25c10.chunk.css.map",
+    "static/js/2.f5cc437e.chunk.js.LICENSE.txt": "/AmathRandomRackGame/static/js/2.f5cc437e.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.d4ae8806.js",
-    "static/js/2.5b7a2e0d.chunk.js",
-    "static/css/main.1cc8d38d.chunk.css",
-    "static/js/main.c04d5633.chunk.js"
+    "static/js/runtime-main.855cb583.js",
+    "static/js/2.f5cc437e.chunk.js",
+    "static/css/main.89c25c10.chunk.css",
+    "static/js/main.a07d7f3d.chunk.js"
   ]
 }
